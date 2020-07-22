@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const SpriteLoaderPlugin = require("svg-sprite-loader/plugin");
 
 module.exports = {
   entry: "./src/index.tsx",
@@ -23,7 +24,15 @@ module.exports = {
       },
       {
         test: /\.(css|scss)$/,
-        use: ["style-loader", "css-loader"],
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+      },
+      {
+        test: /\.(woff|woff2)$/,
+        use: ["file-loader"],
+      },
+      {
+        test: /\.svg$/,
+        use: ["svg-sprite-loader"],
       },
     ],
   },
@@ -31,6 +40,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "src", "index.html"),
     }),
-    //new MiniCssExtractPlugin({}), //разобраться с ним
+    new SpriteLoaderPlugin(),
+    new MiniCssExtractPlugin({}),
   ],
 };

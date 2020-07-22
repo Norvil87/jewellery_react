@@ -1,5 +1,5 @@
 import React from "react";
-import './Header.scss';
+import "./Header.scss";
 
 const Header = () => {
   return (
@@ -12,14 +12,9 @@ const Header = () => {
           </div>
         </form>
         <button className="header__menu-button" type="button">
-          <svg
-            className="header__icon-hamburger"
-            width="25"
-            height="16"
-            xmlns="http://www.w3.org/2000/svg"
-            role="img"
-            aria-label="Open menu"
-          ></svg>{" "}
+          <svg className="header__icon-hamburger" width="25" height="16" role="img" aria-label="Open menu">
+            <use xlinkHref="#icon-hamburger" aria-hidden="true"></use>
+          </svg>
         </button>
         <div className="header__logo-container">
           <a className="header__logo-link">
@@ -27,18 +22,20 @@ const Header = () => {
               className="header__logo-icon header__logo-icon--desktop"
               width="66"
               height="66"
-              xmlns="http://www.w3.org/2000/svg"
               role="img"
               aria-label="Логотип магазина Jewelerry"
-            ></svg>
+            >
+              <use xlinkHref="#icon-logo-desktop" aria-hidden="true"></use>
+            </svg>
             <svg
               className="header__logo-icon header__logo-icon--mobile"
               width="52"
               height="52"
-              xmlns="http://www.w3.org/2000/svg"
               role="img"
               aria-label="Логотип магазина Jewelerry"
-            ></svg>
+            >
+              <use xlinkHref="#icon-logo-mobile" aria-hidden="true"></use>
+            </svg>
           </a>
         </div>
         <div className="header__user-container">
