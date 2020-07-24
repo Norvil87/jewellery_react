@@ -1,6 +1,12 @@
 import React from "react";
-import '../scss/content.scss';
-import '../scss/common.scss';
+
+import New from "../components/New/New";
+import Blog from "../components/Blog/Blog";
+import Faq from "../components/Faq/Faq";
+import Media from "../components/Media/Media";
+
+import "../scss/content.scss";
+import "../scss/common.scss";
 
 const MainPage = () => {
   return (
@@ -13,6 +19,10 @@ const MainPage = () => {
             <p>made to be yours</p>
           </div>
         </div>
+        <New />
+        <Blog />
+        <Faq />
+        <Media />
       </main>
     </>
   );

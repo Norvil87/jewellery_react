@@ -87,10 +87,10 @@
   line-height: 29px;
 }
 
-/* .content__top-container--index {
+.content__top-container--index {
   height: 463px;
 
-  background-image: url("../img/background-index-top-desktop@1x.jpg");
+  background-image: url('../img/background-index-top-desktop@1x.jpg');
 }
 
 .webp .content__top-container--index {
@@ -117,7 +117,7 @@
   .webp .content__top-container--index {
     background-image: url("../img/background-index-top-desktop@2x.webp");
   }
-} */
+}
 
 @media (max-width: $desktop-res) {
   .content__blog {
@@ -204,7 +204,7 @@
     margin-bottom: 40px;
   }
 
- /*  .content__top-container--index {
+  .content__top-container--index {
     background-image: url("../img/background-index-top-mobile@1x.jpg");
     background-size: cover;
   }
@@ -221,7 +221,7 @@
     .webp .content__top-container--index {
       background-image: url("../img/background-index-top-mobile@2x.webp");
     }
-  } */
+  }
 
   .content__top-container h2 {
     font-size: 38px;

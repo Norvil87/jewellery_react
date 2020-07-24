@@ -28,8 +28,24 @@ module.exports = {
       },
       {
         test: /\.(woff|woff2)$/,
-        use: ["file-loader"],
+        loader: "file-loader",
+        options: {
+          outputPath: "fonts",
+        },
       },
+      {
+        test: /\.(png|jpg|webp)$/,
+        loader: "file-loader",
+        options: {
+          outputPath: "img",
+          name: "[name].[ext]",
+          useRelativePath: true,
+        },
+      },
+      /* {
+        test: /\.(png|jpg|webp)$/,
+        loader: "url-loader",
+      }, */
       {
         test: /\.svg$/,
         use: ["svg-sprite-loader"],
