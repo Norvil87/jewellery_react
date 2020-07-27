@@ -12,7 +12,6 @@ const New = () => {
 
     products.map((product: IProduct) => {
       const { id, name, srcSetWebp, srcSetJpg, imgUrl, price } = product;
-      console.log(imgUrl);
       elems.push(
         <Product
           key={id}
@@ -22,6 +21,7 @@ const New = () => {
           price={price}
           srcSetWebp={srcSetWebp}
           srcSetJpg={srcSetJpg}
+          className="new__gallery-item"
         />
       );
     });

@@ -5,4 +5,5 @@ export interface IProduct {
   price: number;
   srcSetJpg?: string;
   srcSetWebp?: string;
+  className?: string
 }
