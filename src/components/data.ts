@@ -92,10 +92,10 @@ export const products: IProduct[] = [
   },
   {
     id: 12,
-    name: "Necklace with amethyst",
-    imgUrl: images.purpleGemstoneNecklace_SUBSTITUTE_1x_jpg,
-    srcSetJpg: `${images.purpleGemstoneNecklace_SUBSTITUTE_1x_jpg} 1x, ${images.purpleGemstoneNecklace_SUBSTITUTE_2x_jpg} 2x`,
+    name: "Elephant earrings",
+    imgUrl: images.elephantEarrings_1x_jpg,
+    srcSetJpg: `${images.elephantEarrings_1x_jpg} 1x, ${images.elephantEarrings_2x_jpg} 2x`,
     //srcSetWebp: "img/products/galaxy-earrings@1x.webp 1x, img/products/galaxy-earrings@2x.webp 2x",
-    price: 145,
+    price: 95,
   },
 ];

@@ -15,6 +15,9 @@ module.exports = {
   },
   devServer: {
     watchContentBase: true,
+    historyApiFallback: true, // ?
+    contentBase: './', // ?
+    hot: true // ?
   },
   module: {
     rules: [

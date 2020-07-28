@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import "./New.scss";
 import { products } from "../data";
@@ -37,9 +38,9 @@ const New = () => {
         </button>
         <div>
           <h2>New In</h2>
-          <a className="new__catalog-link" href="catalog.html">
+          <Link className="new__catalog-link" to="/catalog">
             Shop now
-          </a>
+          </Link>
         </div>
         <button className="new__control-button new__control-button--forward" type="button">
           Forward

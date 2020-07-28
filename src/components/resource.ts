@@ -20,8 +20,8 @@ import birdNecklace_1x_jpg from "../img/products/bird-necklace@1x.jpg";
 import birdNecklace_2x_jpg from "../img/products/bird-necklace@2x.jpg";
 import blackLeatherChokerNecklace_1x_jpg from "../img/products/black-leather-choker-necklace@1x.jpg";
 import blackLeatherChokerNecklace_2x_jpg from "../img/products/black-leather-choker-necklace@2x.jpg";
-import purpleGemstoneNecklace_SUBSTITUTE_1x_jpg from "../img/products/purple-gemstone-necklace@1x.jpg";
-import purpleGemstoneNecklace_SUBSTITUTE_2x_jpg from "../img/products/purple-gemstone-necklace@2x.jpg";
+import elephantEarrings_1x_jpg from "../img/products/elephant-earrings@1x.jpg";
+import elephantEarrings_2x_jpg from "../img/products/elephant-earrings@2x.jpg";
 
 export default {
   purpleGemstoneNecklace_1x_jpg,
@@ -46,6 +46,6 @@ export default {
   birdNecklace_2x_jpg,
   blackLeatherChokerNecklace_1x_jpg,
   blackLeatherChokerNecklace_2x_jpg,
-  purpleGemstoneNecklace_SUBSTITUTE_1x_jpg,
-  purpleGemstoneNecklace_SUBSTITUTE_2x_jpg,
+  elephantEarrings_1x_jpg,
+  elephantEarrings_2x_jpg,
 };

@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
@@ -8,10 +9,18 @@ import CatalogPage from "../pages/CatalogPage";
 const App = () => {
   return (
     <>
-      <Header />
-      {/* <MainPage /> */}
-      <CatalogPage />
-      <Footer />
+      <Router>
+        <Header />
+        <Switch>
+          <Route path="/catalog">
+            <CatalogPage />
+          </Route>
+          <Route path="/" exact>
+            <MainPage />
+          </Route>
+        </Switch>
+        <Footer />
+      </Router>
     </>
   );
 };
