@@ -1,9 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
-
 import "./New.scss";
 import { products } from "../data";
 import { IProduct } from "../types";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import Product from "../Product/Product";
 
