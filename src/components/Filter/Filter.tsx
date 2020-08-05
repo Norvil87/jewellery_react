@@ -13,20 +13,28 @@ const Filter = () => {
           <h3>Product</h3>
           <div>
             <div className="filter__input-container">
-              <input id="necklace" className="visually-hidden" type="checkbox" value="necklace" checked />
-              <label className="filter__label">Necklaces</label>
+              <input id="necklace" className="visually-hidden" type="checkbox" value="necklace" />
+              <label htmlFor="necklace" className="filter__label">
+                Necklaces
+              </label>
             </div>
             <div className="filter__input-container">
-              <input id="chocker" className="visually-hidden" type="checkbox" value="chocker" checked />
-              <label className="filter__label">Chokers</label>
+              <input id="chocker" className="visually-hidden" type="checkbox" value="chocker" />
+              <label htmlFor="chocker" className="filter__label">
+                Chokers
+              </label>
             </div>
             <div className="filter__input-container">
               <input id="ring" className="visually-hidden" type="checkbox" value="ring" />
-              <label className="filter__label">Rings</label>
+              <label htmlFor="ring" className="filter__label">
+                Rings
+              </label>
             </div>
             <div className="filter__input-container">
-              <input id="earrings" className="visually-hidden" type="checkbox" value="earrings" checked />
-              <label className="filter__label">Earrings</label>
+              <input id="earrings" className="visually-hidden" type="checkbox" value="earrings" />
+              <label htmlFor="earrings" className="filter__label">
+                Earrings
+              </label>
             </div>
           </div>
         </fieldset>

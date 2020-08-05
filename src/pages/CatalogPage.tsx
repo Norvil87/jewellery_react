@@ -1,8 +1,4 @@
 import React from "react";
-
-import "../scss/content.scss";
-import "../scss/common.scss";
-
 import Filter from "../components/Filter/Filter";
 import Catalog from "../components/Catalog/Catalog";
 
@@ -29,21 +25,21 @@ const CatalogPage = () => (
             </button>
             <ul className="catalog__pagination-list catalog__pagination-list--desktop">
               <li>
-                <a href="#" className="current-page">
+                <button className="current-page">
                   1
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#">2</a>
+                <button>2</button>
               </li>
               <li>
-                <a href="#">3</a>
+                <button>3</button>
               </li>
               <li>
-                <a href="#">4</a>
+                <button>4</button>
               </li>
               <li>
-                <a href="#">5</a>
+                <button>5</button>
               </li>
             </ul>
             <button className="catalog__pagination-button" type="button">

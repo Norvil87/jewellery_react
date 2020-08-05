@@ -1,3 +1,9 @@
+interface additionalProductInfo {
+  metalType: string;
+  stone: string;
+  size: string
+}
+
 export interface IProduct {
   id: number;
   name: string;
@@ -5,5 +11,6 @@ export interface IProduct {
   price: number;
   srcSetJpg?: string;
   srcSetWebp?: string;
-  className?: string
+  className?: string,
+  additionalInfo?: additionalProductInfo
 }

@@ -12,7 +12,6 @@ const Catalog = () => {
 
     products.map((product: IProduct) => {
       const { id, name, srcSetWebp, srcSetJpg, imgUrl, price } = product;
-      console.log(imgUrl);
       elems.push(
         <Product
           key={id}

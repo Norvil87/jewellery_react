@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Footer.scss";
 
 const Footer = () => {
@@ -11,7 +12,7 @@ const Footer = () => {
           <form className="footer__form" action="#" method="POST" encType="multipart/form-data" autoComplete="on">
             <div className="footer__form-input-container">
               <input id="footer-email" type="email" name="email" placeholder="Your E-mail" />
-              <label className="visually-hidden">Subscribe with email</label>
+              <label htmlFor="footer-email" className="visually-hidden">Subscribe with email</label>
             </div>
             <button className="footer__form-button" type="submit">
               Sign Up
@@ -20,68 +21,68 @@ const Footer = () => {
         </div>
         <ul className="footer__nav-list footer__nav-list--left">
           <li className="footer__nav-item">
-            <a className="footer__nav-link" href="#">
+            <Link className="footer__nav-link" to="/underConstruction">
               Ordering & Payment
-            </a>
+            </Link>
           </li>
           <li className="footer__nav-item">
-            <a className="footer__nav-link" href="#">
+            <Link className="footer__nav-link" to="/underConstruction">
               Terms & Conditions
-            </a>
+            </Link>
           </li>
           <li className="footer__nav-item">
-            <a className="footer__nav-link" href="#">
+            <Link className="footer__nav-link" to="/underConstruction">
               Returns & Exchanges
-            </a>
+            </Link>
           </li>
           <li className="footer__nav-item">
-            <a className="footer__nav-link" href="#">
+            <Link className="footer__nav-link" to="/underConstruction">
               Delivery
-            </a>
+            </Link>
           </li>
         </ul>
         <ul className="footer__nav-list footer__nav-list--right">
           <li className="footer__nav-item">
-            <a className="footer__nav-link" href="#">
+            <Link className="footer__nav-link" to="/underConstruction">
               About CH
-            </a>
+            </Link>
           </li>
           <li className="footer__nav-item">
-            <a className="footer__nav-link" href="#">
+            <Link className="footer__nav-link" to="/underConstruction">
               Stores & Hours
-            </a>
+            </Link>
           </li>
           <li className="footer__nav-item">
-            <a className="footer__nav-link" href="#">
+            <Link className="footer__nav-link" to="/underConstruction">
               Jobs
-            </a>
+            </Link>
           </li>
           <li className="footer__nav-item">
-            <a className="footer__nav-link" href="#">
+            <Link className="footer__nav-link" to="/underConstruction">
               Contact Us
-            </a>
+            </Link>
           </li>
         </ul>
         <ul className="footer__social-list">
           <li className="footer__social-item footer__social-item--facebook">
-            <a className="footer__social-link footer__social-link--facebook" href="#">
+            <Link className="footer__social-link footer__social-link--facebook" to="http://facebook.com">
               Facebook
-            </a>
+            </Link>
           </li>
           <li className="footer__social-item footer__social-item--instagramm">
-            <a className="footer__social-link footer__social-link--instagramm" href="#">
+            <Link className="footer__social-link footer__social-link--instagramm" to="http://instagramm.com">
               Instagram
-            </a>
+            </Link>
           </li>
           <li className="footer__social-item">
-            <a className="footer__social-link footer__social-link--pinterest" href="#">
+            <Link className="footer__social-link footer__social-link--pinterest" to="http://pinterest.com">
               Pinterest
-            </a>
+            </Link>
           </li>
           <li className="footer__social-item">
-            <a className="footer__social-link footer__social-link--twitter" href="#">
+            <Link className="footer__social-link footer__social-link--twitter" to="http://twitter.com">
               Twitter
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

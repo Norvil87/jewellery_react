@@ -65,13 +65,13 @@
   margin-right: 13px;
 }
 
-.catalog__pagination-list a {
-  display: block;
-
+.catalog__pagination-list button {
   font-size: 16px;
   line-height: 21px;
-
   color: #9b9997;
+
+  background-color: transparent;
+  border: none;
 }
 
 .catalog__pagination-list .current-page {

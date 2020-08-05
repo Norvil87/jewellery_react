@@ -9,6 +9,11 @@ export const products: IProduct[] = [
     srcSetJpg: `${images.purpleGemstoneNecklace_1x_jpg} 1x, ${images.purpleGemstoneNecklace_2x_jpg} 2x`,
     //srcSetWebp: "../img/products/purple-gemstone-necklace@1x.webp 1x, ../img/products/purple-gemstone-necklace@2x.webp 2x",
     price: 145,
+    additionalInfo: {
+      metalType: 'silver',
+      stone: 'amethyst',
+      size: "18'/20'" 
+    }
   },
   {
     id: 2,
@@ -17,6 +22,11 @@ export const products: IProduct[] = [
     srcSetJpg: `${images.layeredChokerNecklace_1x_jpg} 1x, ${images.layeredChokerNecklace_2x_jpg} 2x`,
     //srcSetWebp: "../../img/products/layered-choker-necklace@1x.webp 1x, ../../img/products/layered-choker-necklace@2x.webp 2x",
     price: 115,
+    additionalInfo: {
+      metalType: 'silver',
+      stone: 'none',
+      size: "16'/18'" 
+    }
   },
   {
     id: 3,
@@ -25,6 +35,11 @@ export const products: IProduct[] = [
     srcSetJpg: `${images.daintyGoldNecklace_1x_jpg} 1x, ${images.daintyGoldNecklace_2x_jpg} 2x`,
     //srcSetWebp: "img/products/dainty-gold-necklace@1x.webp 1x, img/products/dainty-gold-necklace@2x.webp 2x",
     price: 215,
+    additionalInfo: {
+      metalType: 'gold',
+      stone: 'none',
+      size: "19'/21'" 
+    }
   },
   {
     id: 4,
@@ -33,6 +48,11 @@ export const products: IProduct[] = [
     srcSetJpg: `${images.galaxyEarrings_1x_jpg} 1x, ${images.galaxyEarrings_2x_jpg} 2x`,
     //srcSetWebp: "img/products/galaxy-earrings@1x.webp 1x, img/products/galaxy-earrings@2x.webp 2x",
     price: 95,
+    additionalInfo: {
+      metalType: 'silver',
+      stone: 'none',
+      size: "15'/17'" 
+    }
   },
   {
     id: 5,
@@ -41,6 +61,11 @@ export const products: IProduct[] = [
     srcSetJpg: `${images.doublePearlEarrings_1x_jpg} 1x, ${images.doublePearlEarrings_2x_jpg} 2x`,
     //srcSetWebp: "img/products/galaxy-earrings@1x.webp 1x, img/products/galaxy-earrings@2x.webp 2x",
     price: 115,
+    additionalInfo: {
+      metalType: 'silver',
+      stone: 'pearl',
+      size: "20'/22'" 
+    }
   },
   {
     id: 6,
@@ -49,6 +74,11 @@ export const products: IProduct[] = [
     srcSetJpg: `${images.blackChokerGoldBead_1x_jpg} 1x, ${images.blackChokerGoldBead_2x_jpg} 2x`,
     //srcSetWebp: "img/products/galaxy-earrings@1x.webp 1x, img/products/galaxy-earrings@2x.webp 2x",
     price: 55,
+    additionalInfo: {
+      metalType: 'silver/gold',
+      stone: 'none',
+      size: "18'/23'" 
+    }
   },
   {
     id: 7,
@@ -57,6 +87,11 @@ export const products: IProduct[] = [
     srcSetJpg: `${images.goldLayeredNecklace_1x_jpg} 1x, ${images.goldLayeredNecklace_2x_jpg} 2x`,
     //srcSetWebp: "img/products/galaxy-earrings@1x.webp 1x, img/products/galaxy-earrings@2x.webp 2x",
     price: 155,
+    additionalInfo: {
+      metalType: 'gold',
+      stone: 'none',
+      size: "14'/19'" 
+    }
   },
   {
     id: 8,
@@ -65,6 +100,11 @@ export const products: IProduct[] = [
     srcSetJpg: `${images.blueGemstonePendant_1x_jpg} 1x, ${images.blueGemstonePendant_2x_jpg} 2x`,
     //srcSetWebp: "img/products/galaxy-earrings@1x.webp 1x, img/products/galaxy-earrings@2x.webp 2x",
     price: 105,
+    additionalInfo: {
+      metalType: 'silver',
+      stone: 'gemstone',
+      size: "15'/18'" 
+    }
   },
   {
     id: 9,
@@ -73,6 +113,11 @@ export const products: IProduct[] = [
     srcSetJpg: `${images.bohoEarrings_1x_jpg} 1x, ${images.bohoEarrings_2x_jpg} 2x`,
     //srcSetWebp: "img/products/galaxy-earrings@1x.webp 1x, img/products/galaxy-earrings@2x.webp 2x",
     price: 75,
+    additionalInfo: {
+      metalType: 'silver',
+      stone: 'none',
+      size: "16'/19'" 
+    }
   },
   {
     id: 10,
@@ -81,6 +126,11 @@ export const products: IProduct[] = [
     srcSetJpg: `${images.birdNecklace_1x_jpg} 1x, ${images.birdNecklace_2x_jpg} 2x`,
     //srcSetWebp: "img/products/galaxy-earrings@1x.webp 1x, img/products/galaxy-earrings@2x.webp 2x",
     price: 135,
+    additionalInfo: {
+      metalType: 'gold',
+      stone: 'none',
+      size: "18'/20'" 
+    }
   },
   {
     id: 11,
@@ -89,6 +139,11 @@ export const products: IProduct[] = [
     srcSetJpg: `${images.blackLeatherChokerNecklace_1x_jpg} 1x, ${images.blackLeatherChokerNecklace_2x_jpg} 2x`,
     //srcSetWebp: "img/products/galaxy-earrings@1x.webp 1x, img/products/galaxy-earrings@2x.webp 2x",
     price: 85,
+    additionalInfo: {
+      metalType: 'silver',
+      stone: 'none',
+      size: "12'/17'" 
+    }
   },
   {
     id: 12,
@@ -97,5 +152,10 @@ export const products: IProduct[] = [
     srcSetJpg: `${images.elephantEarrings_1x_jpg} 1x, ${images.elephantEarrings_2x_jpg} 2x`,
     //srcSetWebp: "img/products/galaxy-earrings@1x.webp 1x, img/products/galaxy-earrings@2x.webp 2x",
     price: 95,
+    additionalInfo: {
+      metalType: 'silver',
+      stone: 'none',
+      size: "24'/28'" 
+    }
   },
 ];

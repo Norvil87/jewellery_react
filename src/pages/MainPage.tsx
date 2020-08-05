@@ -5,9 +5,6 @@ import Blog from "../components/Blog/Blog";
 import Faq from "../components/Faq/Faq";
 import Media from "../components/Media/Media";
 
-import "../scss/content.scss";
-import "../scss/common.scss";
-
 const MainPage = () => (
   <main className="content">
     <h1 className="visually-hidden">Jewellery main page</h1>

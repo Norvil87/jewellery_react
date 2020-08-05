@@ -1,8 +1,6 @@
 import React from "react";
 import ProductDescription from "../components/ProductDescription/ProductDescription";
 import New from "../components/New/New";
-import "../scss/content.scss";
-import "../scss/common.scss";
 
 const ProductPage = (props: any) => {
   
