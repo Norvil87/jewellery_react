@@ -1,9 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, withRouter, RouteComponentProps } from "react-router-dom";
 import "./Header.scss";
+import "./MobileMenu.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleLoginModalVisibility } from ",,/../../src/store/actions";
 
 const Header = (props: RouteComponentProps) => {
   const isMainPage = props.location.pathname === "/";
+  const tabletBreakpoint = 767;
+  const dispatch = useDispatch();
+
+
+  const [isMobileMenuOpened, toggleMobileMenuVisibility] = useState(false);  // вынести в стор???
+
+  const handleClick = () => {
+    toggleMobileMenuVisibility(!isMobileMenuOpened);
+  };
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > tabletBreakpoint) {
+      toggleMobileMenuVisibility(false)
+    }
+  })
+
   return (
     <>
       <header className="header">
@@ -22,7 +41,7 @@ const Header = (props: RouteComponentProps) => {
               </label>
             </div>
           </form>
-          <button className="header__menu-button" type="button">
+          <button className="header__menu-button" type="button" onClick={handleClick}>
             <svg className="header__icon-hamburger" width="25" height="16" role="img" aria-label="Open menu">
               <use xlinkHref="#icon-hamburger" aria-hidden="true"></use>
             </svg>
@@ -50,7 +69,13 @@ const Header = (props: RouteComponentProps) => {
             </Link>
           </div>
           <div className="header__user-container">
-            <button className="header__user-button" type="button">
+            <button
+              className="header__user-button"
+              type="button"
+              onClick={() => {
+                dispatch(toggleLoginModalVisibility());
+              }}
+            >
               Login
             </button>
             <Link className="header__user-cart-link" to="/underConstruction">
@@ -90,9 +115,9 @@ const Header = (props: RouteComponentProps) => {
           </ul>
         </nav>
       </header>
-      <header className="header container mobile-menu hidden no-js">
+      <header className={`header container mobile-menu ${!isMobileMenuOpened && "hidden"}`}>
         <div className="header__top-container mobile-menu__top-container">
-          <button className="header__menu-button" type="button">
+          <button className="header__menu-button" type="button" onClick={handleClick}>
             <svg className="header__icon-hamburger" width="25" height="16" role="img" aria-label="Open menu">
               <use xlinkHref="#icon-hamburger-droppable" aria-hidden="true"></use>
             </svg>

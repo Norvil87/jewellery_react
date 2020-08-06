@@ -1,11 +1,18 @@
 import React from "react";
 import { IProduct } from "../types";
 import "./ProductDescription.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleCartModalVisibility } from "../../store/actions";
+import { IRootState } from "../../store/types";
+import { products } from "../data";
 
-const ProductDescription: React.FC<any> = ({ data, match }) => {
-  const product = data.find((product: IProduct) => product.id == match.params.id);
-  const { imgUrl, srcSetJpg, srcSetWebp, name, price, additionalInfo } = product;
+const ProductDescription: React.FC<any> = () => {
+  const selectedProductId = useSelector((state: IRootState) => state.selectedProductId);
+  const { imgUrl, srcSetJpg, srcSetWebp, name, price, additionalInfo } = products.find(
+    (product: IProduct) => product.id === selectedProductId
+  );
   const { metalType, stone, size } = additionalInfo;
+  const dispatch = useDispatch();
 
   return (
     <section className="item content__item">
@@ -15,13 +22,13 @@ const ProductDescription: React.FC<any> = ({ data, match }) => {
           <div className="item__gallery">
             <div className="item__small-images-container">
               <a className="item__image-link">
-                <img alt="image not available" />
+                <img src={imgUrl} alt="image not available" />
               </a>
               <a className="item__image-link">
-                <img alt="image not available" />
+                <img src={imgUrl} alt="image not available" />
               </a>
               <a className="item__image-link">
-                <img alt="image not available" />
+                <img src={imgUrl} alt="image not available" />
               </a>
             </div>
             <div className="item__big-image-container">
@@ -56,7 +63,11 @@ const ProductDescription: React.FC<any> = ({ data, match }) => {
                   <p>{size}</p>
                 </li>
               </ul>
-              <button className="button item__button" type="button">
+              <button
+                className="button item__button"
+                type="button"
+                onClick={() => dispatch(toggleCartModalVisibility())}
+              >
                 Add to cart
               </button>
               <div className="item__delivery">

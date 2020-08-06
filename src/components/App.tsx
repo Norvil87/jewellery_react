@@ -8,24 +8,30 @@ import AddItemModal from "./AddItemModal/AddItemModal";
 import MainPage from "../pages/MainPage";
 import CatalogPage from "../pages/CatalogPage";
 import ProductPage from "../pages/ProductPage";
-import { products } from "./data";
 import "../scss/content.scss";
 import "../scss/common.scss";
+import { useSelector } from "react-redux";
+import { IRootState } from "../store/types";
 
 const App = () => {
+  const loginModalVisible = useSelector((state: IRootState) => state.loginModalVisible);
+  const cartModalVisible = useSelector((state: IRootState) => state.cartModalVisible);
+
   return (
     <>
       <Router>
-        <Header />
-        <Switch>
-          <Route path="/catalog" component={CatalogPage} />
-          <Route path="/products/:id" render={props => <ProductPage data={products} {...props} />} />
-          <Route path="/" exact component={MainPage} />
-          <Route path="/underConstruction" component={UnderConstruction} />
-        </Switch>
+        <div className='wrapper'>
+          <Header />
+          <Switch>
+            <Route path="/catalog" component={CatalogPage} />
+            <Route path="/products/:id" component={ProductPage} />
+            <Route path="/" exact component={MainPage} />
+            <Route path="/underConstruction" component={UnderConstruction} />
+          </Switch>
+        </div>
         <Footer />
-        {/* <LoginModal />
-        <AddItemModal /> */}
+        {loginModalVisible && <LoginModal />}
+        {cartModalVisible && <AddItemModal />}
       </Router>
     </>
   );

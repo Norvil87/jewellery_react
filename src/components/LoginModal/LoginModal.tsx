@@ -1,9 +1,13 @@
 import React from "react";
 import "./LoginModal.scss";
+import { toggleLoginModalVisibility } from "../../store/actions";
+import { useDispatch } from "react-redux";
 
 const LoginModal = () => {
+  const dispatch = useDispatch();
+
   return (
-    <div className="login">
+    <div className="login" /* onClick={() => dispatch(toggleLoginModalVisibility())} */>
       <div className="login__content">
         <div className="login__content-container">
           <h2>Log In</h2>
@@ -24,7 +28,11 @@ const LoginModal = () => {
             <button className="button login__button login__button--submit" type="submit">
               Log In
             </button>
-            <button className="login__button login__button--close" type="button">
+            <button
+              className="login__button login__button--close"
+              type="button"
+              onClick={() => dispatch(toggleLoginModalVisibility())}
+            >
               close modal
             </button>
           </form>
