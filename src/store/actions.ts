@@ -1,32 +1,44 @@
-export const toggleLoginModalVisibility = () => {
+import { IActionType } from "./types";
+
+export const toggleLoginModalVisibility = (): IActionType => {
   return {
     type: "TOGGLE_LOGIN_MODAL_VISIBILITY",
   };
 };
 
-export const toggleCartModalVisibility = () => {
+export const toggleCartModalVisibility = (): IActionType => {
   return {
     type: "TOGGLE_CART_MODAL_VISIBILITY",
   };
 };
 
-export const setSelectedProductId = (id: number) => {
+export const setSelectedProductId = (id: number): IActionType => {
   return {
     type: "SET_SELECTED_PRODUCT_ID",
     payload: {
-      id: id,
+      id,
     },
   };
 };
 
-export const incrementSelectedProducctQuantity = () => {
+export const incrementSelectedProducctQuantity = (): IActionType => {
   return {
     type: "INCREMENT_SELECTED_PRODUCT_QUANTITY",
   };
 };
 
-export const decrementSelectedProducctQuantity = () => {
+export const decrementSelectedProducctQuantity = (): IActionType => {
   return {
     type: "DECREMENT_SELECTED_PRODUCT_QUANTITY",
+  };
+};
+
+export const toggleFilterVisibility = (name: string): IActionType => {
+  
+  return {
+    type: "TOGGLE_FILTER_VISIBILITY",
+    payload: {
+      name,
+    },
   };
 };

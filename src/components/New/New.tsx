@@ -10,12 +10,13 @@ const New = () => {
     const elems: any[] = []; //?
 
     products.map((product: IProduct) => {
-      const { id, name, srcSetWebp, srcSetJpg, imgUrl, price } = product;
+      const { id, name, srcSetWebp, srcSetJpg, imgUrl, price, type } = product;
       elems.push(
         <Product
           key={id}
           id={id}
           name={name}
+          type={type}
           imgUrl={imgUrl}
           price={price}
           srcSetWebp={srcSetWebp}

@@ -1,32 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Faq.scss";
+import { faqData } from "../data";
+import { IFaq } from "../types";
 
 const Faq = () => {
+  const [folded, toggleFolded] = useState(faqData.map(faq => true));
+
+  const handleClick = (id: number) => () => {
+    toggleFolded([...folded, (folded[id] = !folded[id])]);
+  };
+
+  const renderItems = () => {
+    const faqs: JSX.Element[] = [];
+    faqData.map((faq: IFaq) => {
+      const { id, question, answer } = faq;
+      faqs.push(
+        <li key={id} className={`faq__item ${folded[id] ? "" : "unfolded"}`}>
+          <h3 onClick={handleClick(id)}>{question}</h3>
+          <p>{answer}</p>
+        </li>
+      );
+    });
+    return faqs;
+  };
+
   return (
     <section className="faq content__faq">
       <div className="container">
         <h2>Frequently asked questions</h2>
-        <ul className="faq__list">
-          <li className="faq__item unfolded">
-            <h3>What materials are the jewellery made of?</h3>
-            <p>
-              Our jewellerry is made of solid gold, silver or leather. Also, some jewellery contains precious and
-              semiprecious stones and crystals.
-            </p>
-          </li>
-          <li className="faq__item">
-            <h3>Which countries do you deliver to?</h3>
-            <p>Answer here</p>
-          </li>
-          <li className="faq__item">
-            <h3>What are the payment methods?</h3>
-            <p>Answer here</p>
-          </li>
-          <li className="faq__item">
-            <h3>Can I return the jewellery if it didn’t fit me?</h3>
-            <p>Answer here</p>
-          </li>
-        </ul>
+        <ul className="faq__list">{renderItems()}</ul>
       </div>
     </section>
   );

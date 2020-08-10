@@ -1,7 +1,12 @@
 import React from "react";
 import "./Filter.scss";
-
+import { toggleFilterVisibility } from "../../store/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { IRootState } from "../../store/types";
 const Filter = () => {
+  const state = useSelector((state: IRootState) => state);
+  const dispatch = useDispatch();
+  console.log(state);
   return (
     <section className="filter">
       <h2 className="visually-hidden">Filters</h2>
@@ -13,25 +18,49 @@ const Filter = () => {
           <h3>Product</h3>
           <div>
             <div className="filter__input-container">
-              <input id="necklace" className="visually-hidden" type="checkbox" value="necklace" />
+              <input
+                id="necklace"
+                className="visually-hidden"
+                type="checkbox"
+                value="necklace"
+                onClick={() => dispatch(toggleFilterVisibility("necklace"))}
+              />
               <label htmlFor="necklace" className="filter__label">
                 Necklaces
               </label>
             </div>
             <div className="filter__input-container">
-              <input id="chocker" className="visually-hidden" type="checkbox" value="chocker" />
+              <input
+                id="chocker"
+                className="visually-hidden"
+                type="checkbox"
+                value="chocker"
+                onClick={() => dispatch(toggleFilterVisibility("chocker"))}
+              />
               <label htmlFor="chocker" className="filter__label">
                 Chokers
               </label>
             </div>
             <div className="filter__input-container">
-              <input id="ring" className="visually-hidden" type="checkbox" value="ring" />
+              <input
+                id="ring"
+                className="visually-hidden"
+                type="checkbox"
+                value="ring"
+                onClick={() => dispatch(toggleFilterVisibility("ring"))}
+              />
               <label htmlFor="ring" className="filter__label">
                 Rings
               </label>
             </div>
             <div className="filter__input-container">
-              <input id="earrings" className="visually-hidden" type="checkbox" value="earrings" />
+              <input
+                id="earrings"
+                className="visually-hidden"
+                type="checkbox"
+                value="earrings"
+                onClick={() => dispatch(toggleFilterVisibility("earrings"))}
+              />
               <label htmlFor="earrings" className="filter__label">
                 Earrings
               </label>

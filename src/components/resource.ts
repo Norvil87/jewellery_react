@@ -22,6 +22,10 @@ import blackLeatherChokerNecklace_1x_jpg from "../img/products/black-leather-cho
 import blackLeatherChokerNecklace_2x_jpg from "../img/products/black-leather-choker-necklace@2x.jpg";
 import elephantEarrings_1x_jpg from "../img/products/elephant-earrings@1x.jpg";
 import elephantEarrings_2x_jpg from "../img/products/elephant-earrings@2x.jpg";
+import icon_logo_desktop from "../img/icon-logo-desktop.svg";
+import icon_logo_mobile from "../img/icon-logo-mobile.svg";
+import icon_hamburger from "../img/icon-hamburger.svg";
+import icon_hamburger_droppable from "../img/icon-hamburger-droppable.svg";
 
 export default {
   purpleGemstoneNecklace_1x_jpg,
@@ -48,4 +52,8 @@ export default {
   blackLeatherChokerNecklace_2x_jpg,
   elephantEarrings_1x_jpg,
   elephantEarrings_2x_jpg,
+  icon_logo_desktop,
+  icon_logo_mobile,
+  icon_hamburger,
+  icon_hamburger_droppable,
 };

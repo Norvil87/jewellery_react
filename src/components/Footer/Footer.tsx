@@ -65,24 +65,24 @@ const Footer = () => {
         </ul>
         <ul className="footer__social-list">
           <li className="footer__social-item footer__social-item--facebook">
-            <Link className="footer__social-link footer__social-link--facebook" to="http://facebook.com">
+            <a className="footer__social-link footer__social-link--facebook" href="http://facebook.com">
               Facebook
-            </Link>
+            </a>
           </li>
           <li className="footer__social-item footer__social-item--instagramm">
-            <Link className="footer__social-link footer__social-link--instagramm" to="http://instagramm.com">
+            <a className="footer__social-link footer__social-link--instagramm" href="http://instagramm.com">
               Instagram
-            </Link>
+            </a>
           </li>
           <li className="footer__social-item">
-            <Link className="footer__social-link footer__social-link--pinterest" to="http://pinterest.com">
+            <a className="footer__social-link footer__social-link--pinterest" href="http://pinterest.com">
               Pinterest
-            </Link>
+            </a>
           </li>
           <li className="footer__social-item">
-            <Link className="footer__social-link footer__social-link--twitter" to="http://twitter.com">
+            <a className="footer__social-link footer__social-link--twitter" href="http://twitter.com">
               Twitter
-            </Link>
+            </a>
           </li>
         </ul>
       </div>

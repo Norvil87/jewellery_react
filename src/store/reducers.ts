@@ -5,6 +5,12 @@ const initialState: IRootState = {
   cartModalVisible: false,
   selectedProductId: null,
   selectedProductQuantity: 1,
+  filters: {
+    necklace: false,
+    choker: false,
+    ring: false,
+    earrings: false,
+  },
 };
 
 export const reducer = (state: IRootState = initialState, action: any) => {
@@ -21,6 +27,11 @@ export const reducer = (state: IRootState = initialState, action: any) => {
       const selectedProductQuantity =
         state.selectedProductQuantity === 1 ? state.selectedProductQuantity : state.selectedProductQuantity - 1;
       return { ...state, selectedProductQuantity: selectedProductQuantity };
+    case "TOGGLE_FILTER_VISIBILITY":
+      const name = action.payload.name;
+      const newFilters = { ...state.filters };
+      newFilters[name] = !newFilters[name];
+      return { ...state, filters: newFilters };
     default:
       return state;
   }
