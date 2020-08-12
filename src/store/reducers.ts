@@ -1,15 +1,17 @@
 import { IRootState } from "./types";
+import { products } from "../components/data";
 
 const initialState: IRootState = {
+  visibleProducts: products,
   loginModalVisible: false,
   cartModalVisible: false,
   selectedProductId: null,
   selectedProductQuantity: 1,
   filters: {
-    necklace: false,
-    choker: false,
-    ring: false,
-    earrings: false,
+    necklace: true,
+    choker: true,
+    ring: true,
+    earrings: true,
   },
 };
 
@@ -32,6 +34,8 @@ export const reducer = (state: IRootState = initialState, action: any) => {
       const newFilters = { ...state.filters };
       newFilters[name] = !newFilters[name];
       return { ...state, filters: newFilters };
+    case "SET_VISIBLE_PRODUCTS":
+      return { ...state, visibleProducts: action.payload.products };
     default:
       return state;
   }

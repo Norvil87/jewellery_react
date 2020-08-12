@@ -1,4 +1,5 @@
 import { IActionType } from "./types";
+import { IProduct } from "../components/types";
 
 export const toggleLoginModalVisibility = (): IActionType => {
   return {
@@ -34,11 +35,19 @@ export const decrementSelectedProducctQuantity = (): IActionType => {
 };
 
 export const toggleFilterVisibility = (name: string): IActionType => {
-  
   return {
     type: "TOGGLE_FILTER_VISIBILITY",
     payload: {
       name,
+    },
+  };
+};
+
+export const setVisibleProducts = (products: IProduct[]): IActionType => {
+  return {
+    type: "SET_VISIBLE_PRODUCTS",
+    payload: {
+      products,
     },
   };
 };

@@ -76,9 +76,7 @@
 .filter__fieldset {
   margin: 0;
   padding: 0;
-  padding-top: 23px;
-  padding-bottom: 21px;
-  padding-left: 25px;
+  padding: 25px;
 
   border: 1px solid $fancyBrown;
   border-bottom: none;
@@ -147,12 +145,17 @@
 .filter__slider-container {
   margin-top: 25px;
   margin-bottom: 30px;
+
+  position: relative;
 }
 
 .filter__slider-output {
   font-size: 14px;
   font-weight: 500;
   color: #1d1613;
+  text-align: center;
+
+  padding-top: 15px;
 }
 
 .filter__slider-price {
@@ -178,17 +181,18 @@
   background-color: $fancyBrown;
 }
 
-.filter__slider-thumb {
-  width: 15px;
-  height: 15px;
+.filter__slider-handle {
+  width: 16px;
+  height: 16px;
   margin: 0 auto;
   margin-bottom: 5px;
+  margin-left: -8px;
 
   background-color: $fancyBrown;
-  border-radius: 50%;
+  border-radius: 50%;    
 }
 
-.filter__slider-thumb:hover {
+.filter__slider-handle:hover {
   opacity: 0.6;
 
   cursor: pointer;
@@ -251,9 +255,7 @@
   }
 
   .filter__fieldset {
-    padding-top: 34px;
-    padding-bottom: 34px;
-    padding-left: 40px;
+    padding: 35px 40px;
 
     border: 1px solid $fancyBrown;
     border-top: none;
@@ -320,9 +322,10 @@
     margin-bottom: 35px;
   }
 
-  .filter__slider-thumb {
+  .filter__slider-handle {
     width: 18px;
     height: 18px;
+    margin-left: -9px;
   }
 
   .filter__slider-output {
@@ -359,10 +362,7 @@
   }
 
   .filter__fieldset {
-    padding-left: 20px;
-
-    padding-top: 24px;
-    padding-bottom: 24px;
+    padding: 24px 20px;
   }
 
   .filter__fieldset--product {

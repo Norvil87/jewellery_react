@@ -25,9 +25,7 @@ const CatalogPage = () => (
             </button>
             <ul className="catalog__pagination-list catalog__pagination-list--desktop">
               <li>
-                <button className="current-page">
-                  1
-                </button>
+                <button className="current-page">1</button>
               </li>
               <li>
                 <button>2</button>

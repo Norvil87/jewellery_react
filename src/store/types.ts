@@ -1,4 +1,7 @@
+import { IProduct } from "../components/types";
+
 export interface IRootState {
+  visibleProducts: IProduct[]
   loginModalVisible: boolean;
   cartModalVisible: boolean;
   selectedProductId: number;

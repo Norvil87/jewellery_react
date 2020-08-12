@@ -1,12 +1,29 @@
 import React from "react";
 import "./Filter.scss";
-import { toggleFilterVisibility } from "../../store/actions";
+import { toggleFilterVisibility, setVisibleProducts } from "../../store/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "../../store/types";
+import { products } from "../data";
+import PriceSlider from "../PriceSlider/PriceSlider";
+
 const Filter = () => {
-  const state = useSelector((state: IRootState) => state);
+  const filters = useSelector((state: IRootState) => state.filters);
   const dispatch = useDispatch();
-  console.log(state);
+
+  const handleApplyButtonClick = (evt: React.MouseEvent) => {
+    evt.preventDefault();
+
+    const filteredProducts = products.filter(product => {
+      return filters[product.type];
+    });
+
+    dispatch(setVisibleProducts(filteredProducts));
+  };
+
+  const handleFilterClick = (name: string) => () => {
+    dispatch(toggleFilterVisibility(name));
+  };
+
   return (
     <section className="filter">
       <h2 className="visually-hidden">Filters</h2>
@@ -23,7 +40,8 @@ const Filter = () => {
                 className="visually-hidden"
                 type="checkbox"
                 value="necklace"
-                onClick={() => dispatch(toggleFilterVisibility("necklace"))}
+                onClick={handleFilterClick("necklace")}
+                defaultChecked
               />
               <label htmlFor="necklace" className="filter__label">
                 Necklaces
@@ -35,7 +53,8 @@ const Filter = () => {
                 className="visually-hidden"
                 type="checkbox"
                 value="chocker"
-                onClick={() => dispatch(toggleFilterVisibility("chocker"))}
+                onClick={handleFilterClick("choker")}
+                defaultChecked
               />
               <label htmlFor="chocker" className="filter__label">
                 Chokers
@@ -47,7 +66,8 @@ const Filter = () => {
                 className="visually-hidden"
                 type="checkbox"
                 value="ring"
-                onClick={() => dispatch(toggleFilterVisibility("ring"))}
+                onClick={handleFilterClick("ring")}
+                defaultChecked
               />
               <label htmlFor="ring" className="filter__label">
                 Rings
@@ -59,7 +79,8 @@ const Filter = () => {
                 className="visually-hidden"
                 type="checkbox"
                 value="earrings"
-                onClick={() => dispatch(toggleFilterVisibility("earrings"))}
+                onClick={handleFilterClick("earrings")}
+                defaultChecked
               />
               <label htmlFor="earrings" className="filter__label">
                 Earrings
@@ -95,7 +116,12 @@ const Filter = () => {
             </div>
           </div>
         </fieldset>
-        <button className="button filter__button filter__button--submit" type="submit">
+        <fieldset className="filter__fieldset filter__fieldset--price unfolded">
+          <h3>Price</h3>
+          <PriceSlider />
+        </fieldset>
+        
+        <button className="button filter__button filter__button--submit" type="submit" onClick={handleApplyButtonClick}>
           Apply
         </button>
         <button className="filter__button filter__button--clear" type="reset">
