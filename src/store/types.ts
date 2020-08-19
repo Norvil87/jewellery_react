@@ -1,12 +1,16 @@
-import { IProduct } from "../components/types";
+import { IProducts, ICartProducts } from "../components/types";
 
 export interface IRootState {
-  visibleProducts: IProduct[]
+  visibleProducts: IProducts;
   loginModalVisible: boolean;
-  cartModalVisible: boolean;
-  selectedProductId: number;
+  addItemModalVisible: boolean;
+  cartItems: ICartProducts;
+  cartItemsTotal: number;
+  selectedProductId: string;
   selectedProductQuantity: number;
-  filters: {[name: string]: boolean}
+  filterVisible: boolean;
+  productFilters: { [name: string]: boolean };
+  priceFilter: { [name: string]: number };
 }
 
 interface IToggleLoginModalVisibility {
@@ -30,9 +34,14 @@ interface ISetSelectedProductId {
   payload: { [id: string]: number };
 }
 
-interface IToggleFilterVisibility {
+interface IToggleCheckboxFilterVisibility {
   type: string;
   payload: any;
+}
+
+interface ISetPrice {
+  type: string;
+  payload: number[];
 }
 
 export type IActionType =
@@ -41,4 +50,5 @@ export type IActionType =
   | IIncrementSelectedProducctQuantity
   | IDecrementSelectedProducctQuantity
   | ISetSelectedProductId
-  | IToggleFilterVisibility;
+  | IToggleCheckboxFilterVisibility
+  | ISetPrice;

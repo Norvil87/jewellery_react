@@ -1,18 +1,20 @@
 import React from "react";
-import { IProduct } from "../types";
 import "./ProductDescription.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleCartModalVisibility } from "../../store/actions";
+import { toggleAddItemModalVisibility, updateCartItems } from "../../store/actions";
 import { IRootState } from "../../store/types";
 import { products } from "../data";
 
 const ProductDescription: React.FC<any> = () => {
   const selectedProductId = useSelector((state: IRootState) => state.selectedProductId);
-  const { imgUrl, srcSetJpg, srcSetWebp, name, price, additionalInfo } = products.find(
-    (product: IProduct) => product.id === selectedProductId
-  );
+  const { imgUrl, srcSetJpg, srcSetWebp, name, price, additionalInfo } = products[selectedProductId];
   const { metalType, stone, size } = additionalInfo;
   const dispatch = useDispatch();
+
+  const handleAddToCartButtonClick = () => {
+    dispatch(toggleAddItemModalVisibility());
+    dispatch(updateCartItems());
+  };
 
   return (
     <section className="item content__item">
@@ -63,11 +65,7 @@ const ProductDescription: React.FC<any> = () => {
                   <p>{size}</p>
                 </li>
               </ul>
-              <button
-                className="button item__button"
-                type="button"
-                onClick={() => dispatch(toggleCartModalVisibility())}
-              >
+              <button className="button item__button" type="button" onClick={handleAddToCartButtonClick}>
                 Add to cart
               </button>
               <div className="item__delivery">

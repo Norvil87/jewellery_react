@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 const Product: React.FC<IProduct> = props => {
   const { id, name, srcSetWebp, srcSetJpg, imgUrl, price, className } = props;
   const dispatch = useDispatch();
-  
+
   return (
     <>
       <li className={`${className} product`}>

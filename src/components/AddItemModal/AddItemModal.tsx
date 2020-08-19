@@ -3,9 +3,10 @@ import "./AddItemModal.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
-  toggleCartModalVisibility,
-  incrementSelectedProducctQuantity,
-  decrementSelectedProducctQuantity,
+  toggleAddItemModalVisibility,
+  incrementSelectedProductQuantity,
+  decrementSelectedProductQuantity,
+  updateCartItems,
 } from "../../store/actions";
 import { IRootState } from "../../store/types";
 import { products } from "../data";
@@ -14,7 +15,18 @@ const AddItemModal = () => {
   const dispatch = useDispatch();
   const selectedProductId = useSelector((state: IRootState) => state.selectedProductId);
   const selectedProductQuantity = useSelector((state: IRootState) => state.selectedProductQuantity);
-  const { name, price, imgUrl, srcSetJpg, srcSetWebp } = products.find(product => product.id === selectedProductId);
+  const cartItems = useSelector((state: IRootState) => state.cartItems);
+ const { name, price, imgUrl, srcSetJpg, srcSetWebp } = products[selectedProductId];
+
+  const handleIncrementButtonClick = () => {
+    dispatch(incrementSelectedProductQuantity());
+    dispatch(updateCartItems());
+  };
+
+  const handleDecrementButtonClick = () => {
+    dispatch(decrementSelectedProductQuantity());
+    dispatch(updateCartItems());
+  };
 
   return (
     <div className="addItem">
@@ -35,7 +47,7 @@ const AddItemModal = () => {
             <button
               className="addItem__quantity-button addItem__quantity-button--add"
               type="button"
-              onClick={() => dispatch(incrementSelectedProducctQuantity())}
+              onClick={handleIncrementButtonClick}
             >
               add one item
             </button>
@@ -43,7 +55,7 @@ const AddItemModal = () => {
             <button
               className="addItem__quantity-button addItem__quantity-button--remove"
               type="button"
-              onClick={() => dispatch(decrementSelectedProducctQuantity())}
+              onClick={handleDecrementButtonClick}
             >
               remove one item
             </button>
@@ -61,19 +73,23 @@ const AddItemModal = () => {
           <Link
             className="button addItem__link addItem__link--continue"
             to="/catalog"
-            onClick={() => dispatch(toggleCartModalVisibility())}
+            onClick={() => dispatch(toggleAddItemModalVisibility())}
           >
             Continue shopping
           </Link>
           <Link
             className="button addItem__link addItem__link--checkout"
             to="/underConstruction"
-            onClick={() => dispatch(toggleCartModalVisibility())}
+            onClick={() => dispatch(toggleAddItemModalVisibility())}
           >
             Checkout
           </Link>
         </div>
-        <button className="addItem__button-close" type="button" onClick={() => dispatch(toggleCartModalVisibility())}>
+        <button
+          className="addItem__button-close"
+          type="button"
+          onClick={() => dispatch(toggleAddItemModalVisibility())}
+        >
           close modal
         </button>
       </div>

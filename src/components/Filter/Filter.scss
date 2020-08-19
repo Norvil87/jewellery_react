@@ -133,71 +133,6 @@
   display: none;
 }
 
-.filter__slider {
-  width: 100%;
-  height: 1px;
-
-  background-color: #f0eae4;
-
-  position: relative;
-}
-
-.filter__slider-container {
-  margin-top: 25px;
-  margin-bottom: 30px;
-
-  position: relative;
-}
-
-.filter__slider-output {
-  font-size: 14px;
-  font-weight: 500;
-  color: #1d1613;
-  text-align: center;
-
-  padding-top: 15px;
-}
-
-.filter__slider-price {
-  position: absolute;
-}
-
-.filter__slider-price--min {
-  top: -7px;
-  left: 16%;
-}
-
-.filter__slider-price--max {
-  top: -7px;
-  right: 22%;
-}
-
-.filter__slider-track {
-  height: 100%;
-
-  margin-right: 33%;
-  margin-left: 26%;
-
-  background-color: $fancyBrown;
-}
-
-.filter__slider-handle {
-  width: 16px;
-  height: 16px;
-  margin: 0 auto;
-  margin-bottom: 5px;
-  margin-left: -8px;
-
-  background-color: $fancyBrown;
-  border-radius: 50%;    
-}
-
-.filter__slider-handle:hover {
-  opacity: 0.6;
-
-  cursor: pointer;
-}
-
 @media (max-width: $desktop-res) {
   .filter {
     width: 100%;
@@ -312,41 +247,6 @@
 
     color: rgba(255, 255, 255, 0.6);
   }
-
-  .filter__slider-container {
-    width: 304px;
-  }
-
-  .filter__slider-container > div {
-    margin-top: 32px;
-    margin-bottom: 35px;
-  }
-
-  .filter__slider-handle {
-    width: 18px;
-    height: 18px;
-    margin-left: -9px;
-  }
-
-  .filter__slider-output {
-    font-size: 16px;
-    line-height: 21px;
-  }
-
-  .filter__slider-price--min {
-    top: -9px;
-    left: 16%;
-  }
-
-  .filter__slider-price--max {
-    top: -9px;
-    right: 15.5%;
-  }
-
-  .filter__slider-track {
-    margin-right: 24%;
-    margin-left: 24.5%;
-  }
 }
 
 @media (max-width: $tablet-res) {
@@ -391,26 +291,5 @@
 
   .filter__show-button {
     margin-bottom: 40px;
-  }
-
-  .filter__slider-container {
-    width: 250px;
-
-    margin: 0 auto;
-  }
-
-  .filter__slider-price--min {
-    top: -7px;
-    left: 13%;
-  }
-
-  .filter__slider-price--max {
-    top: -7px;
-    right: 17%;
-  }
-
-  .filter__slider-track {
-    margin-right: 24%;
-    margin-left: 23%;
   }
 }

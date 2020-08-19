@@ -1,20 +1,20 @@
 import React from "react";
 import "./New.scss";
 import { products } from "../data";
-import { IProduct } from "../types";
+import { IProducts, IProduct } from "../types";
 import { Link } from "react-router-dom";
 import Product from "../Product/Product";
 
 const New = () => {
   const renderProducts = () => {
-    const elems: any[] = []; //?
+    const elems: JSX.Element[] = [];
 
-    products.map((product: IProduct) => {
-      const { id, name, srcSetWebp, srcSetJpg, imgUrl, price, type } = product;
+    for (const productId in products) {
+      const { name, srcSetWebp, srcSetJpg, imgUrl, price, type } = products[productId];
       elems.push(
         <Product
-          key={id}
-          id={id}
+          key={productId}
+          id={productId}
           name={name}
           type={type}
           imgUrl={imgUrl}
@@ -24,7 +24,7 @@ const New = () => {
           className="new__gallery-item"
         />
       );
-    });
+    }
 
     return elems;
   };

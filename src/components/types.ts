@@ -5,7 +5,7 @@ interface additionalProductInfo {
 }
 
 export interface IProduct {
-  id: number;
+  id?: string;
   name: string;
   imgUrl: string;
   price: number;
@@ -13,7 +13,15 @@ export interface IProduct {
   srcSetWebp?: string;
   className?: string;
   additionalInfo?: additionalProductInfo;
-  type: string
+  type: string;
+}
+
+export interface IProducts {
+  [id: string]: IProduct;
+}
+
+export interface ICartProducts {
+  [id: string]: number;
 }
 
 export interface IFaq {

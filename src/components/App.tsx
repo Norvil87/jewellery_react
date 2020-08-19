@@ -15,12 +15,19 @@ import { IRootState } from "../store/types";
 
 const App = () => {
   const loginModalVisible = useSelector((state: IRootState) => state.loginModalVisible);
-  const cartModalVisible = useSelector((state: IRootState) => state.cartModalVisible);
+  const cartModalVisible = useSelector((state: IRootState) => state.addItemModalVisible);
+
+  /* var iframe = document.createElement("iframe");
+  var html = "<p>Iframeadadfad</p>";
+  document.body.appendChild(iframe);
+  iframe.contentWindow.document.open();
+  iframe.contentWindow.document.write(html);
+  iframe.contentWindow.document.close(); */
 
   return (
     <>
       <Router>
-        <div className='wrapper'>
+        <div className="wrapper">
           <Header />
           <Switch>
             <Route path="/catalog" component={CatalogPage} />

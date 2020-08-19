@@ -1,5 +1,5 @@
 import { IActionType } from "./types";
-import { IProduct } from "../components/types";
+import { IProducts } from "../components/types";
 
 export const toggleLoginModalVisibility = (): IActionType => {
   return {
@@ -7,13 +7,13 @@ export const toggleLoginModalVisibility = (): IActionType => {
   };
 };
 
-export const toggleCartModalVisibility = (): IActionType => {
+export const toggleAddItemModalVisibility = (): IActionType => {
   return {
-    type: "TOGGLE_CART_MODAL_VISIBILITY",
+    type: "TOGGLE_ADD_ITEM_MODAL_VISIBILITY",
   };
 };
 
-export const setSelectedProductId = (id: number): IActionType => {
+export const setSelectedProductId = (id: string): IActionType => {
   return {
     type: "SET_SELECTED_PRODUCT_ID",
     payload: {
@@ -22,32 +22,66 @@ export const setSelectedProductId = (id: number): IActionType => {
   };
 };
 
-export const incrementSelectedProducctQuantity = (): IActionType => {
+export const incrementSelectedProductQuantity = (): IActionType => {
   return {
     type: "INCREMENT_SELECTED_PRODUCT_QUANTITY",
   };
 };
 
-export const decrementSelectedProducctQuantity = (): IActionType => {
+export const decrementSelectedProductQuantity = (): IActionType => {
   return {
     type: "DECREMENT_SELECTED_PRODUCT_QUANTITY",
   };
 };
 
-export const toggleFilterVisibility = (name: string): IActionType => {
+export const toggleFilterCheckboxVisibility = (name: string): IActionType => {
   return {
-    type: "TOGGLE_FILTER_VISIBILITY",
+    type: "TOGGLE_FILTER_CHECKBOX_VISIBILITY",
     payload: {
       name,
     },
   };
 };
 
-export const setVisibleProducts = (products: IProduct[]): IActionType => {
+export const setFilterCheckboxVisibility = (name: string, visible: boolean): IActionType => {
+  return {
+    type: "SET_FILTER_CHECKBOX_VISIBILITY",
+    payload: {
+      name,
+      visible,
+    },
+  };
+};
+
+export const setFilterVisibility = (visible: boolean): IActionType => {
+  return {
+    type: "SET_FILTER_VISIBILITY",
+    payload: {
+      visible,
+    },
+  };
+};
+
+export const setVisibleProducts = (products: IProducts): IActionType => {
   return {
     type: "SET_VISIBLE_PRODUCTS",
     payload: {
       products,
     },
+  };
+};
+
+export const setPrice = (price: number[]): IActionType => {
+  return {
+    type: "SET_PRICE",
+    payload: {
+      price,
+    },
+  };
+};
+
+export const updateCartItems = (): IActionType => {
+  return {
+    type: "UPDATE_CART_ITEMS",
   };
 };

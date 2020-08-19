@@ -9,14 +9,14 @@ const Catalog = () => {
   const visibleProducts = useSelector((state: IRootState) => state.visibleProducts);
 
   const renderProducts = () => {
-    const products: JSX.Element[] = [];
+    const elems: any[] = [];
 
-    visibleProducts.map((product: IProduct) => {
-      const { id, name, srcSetWebp, srcSetJpg, imgUrl, price, type } = product;
-      products.push(
+    for (const productId in visibleProducts) {
+      const { name, srcSetWebp, srcSetJpg, imgUrl, price, type } = visibleProducts[productId];
+      elems.push(
         <Product
-          key={id}
-          id={id}
+          key={productId}
+          id={productId}
           name={name}
           type={type}
           imgUrl={imgUrl}
@@ -26,15 +26,15 @@ const Catalog = () => {
           className="catalog__item"
         />
       );
-    });
+    };
 
-    return products;
+    return elems;
   };
 
   return (
     <section className="catalog">
       <h2 className="visually-hidden">Catalog</h2>
-      {visibleProducts.length ? (
+      {Object.keys(visibleProducts).length ? (
         <ul className="catalog__list"> {renderProducts()}</ul>
       ) : (
         <h2 style={{ textAlign: "center" }}>No products at your request</h2>

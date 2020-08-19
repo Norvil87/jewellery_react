@@ -1,19 +1,21 @@
 import React from "react";
-import { Slider, Handles, Tracks } from "react-compound-slider";
-import "../Filter/Filter.scss";
+import { Slider, Handles, Tracks, Rail } from "react-compound-slider";
+import "./PriceSlider.scss";
+import { useSelector, useDispatch } from "react-redux";
+import { IRootState } from "../../store/types";
+import { setPrice } from "../../store/actions";
 
 const PriceSlider = () => {
+  const { minDefault, maxDefault, minCurrent, maxCurrent } = useSelector(
+    (state: IRootState) => state.priceFilter
+  );
+  const dispatch = useDispatch();
+
   function Track({ source, target, getTrackProps }: any) {
     return (
       <div
+        className="filter__slider-track"
         style={{
-          position: "absolute",
-          height: 10,
-          zIndex: 1,
-          marginTop: 35,
-          backgroundColor: "#546C91",
-          borderRadius: 5,
-          cursor: "pointer",
           left: `${source.percent}%`,
           width: `${target.percent - source.percent}%`,
         }}
@@ -37,9 +39,21 @@ const PriceSlider = () => {
     );
   }
 
+  const handleSlideEnd = (values: number[]) => {
+    dispatch(setPrice(values));
+  };
+
   return (
-    <Slider className="filter__slider-container" domain={[0, 100]} values={[30]} step={1} mode={2}>
+    <Slider
+      className="filter__slider-container"
+      domain={[minDefault, maxDefault]}
+      values={[minCurrent, maxCurrent]}
+      step={1}
+      mode={2}
+      onSlideEnd={handleSlideEnd}
+    >
       <div className="filter__slider" />
+      <Rail>{({ getRailProps }) => <div className="filter__slider-rail" {...getRailProps()} />}</Rail>
       <Handles>
         {({ handles, getHandleProps }) => (
           <div>
@@ -49,9 +63,9 @@ const PriceSlider = () => {
           </div>
         )}
       </Handles>
-      <Tracks right={false}>
+      <Tracks right={false} left={false}>
         {({ tracks, getTrackProps }) => (
-          <div className="slider-tracks">
+          <div>
             {tracks.map(({ id, source, target }) => (
               <Track key={id} source={source} target={target} getTrackProps={getTrackProps} />
             ))}
