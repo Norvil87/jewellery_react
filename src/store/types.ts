@@ -2,9 +2,12 @@ import { IProducts, ICartProducts } from "../components/types";
 
 export interface IRootState {
   visibleProducts: IProducts;
+  filteredProducts: IProducts;
   loginModalVisible: boolean;
   mobileMenuVisible: boolean;
   addItemModalVisible: boolean;
+  productsPerPage: number;
+  currentPage: number;
   cartItems: ICartProducts;
   cartItemsTotal: number;
   selectedProductId: string;
@@ -68,4 +71,4 @@ export type IActionType =
   | IToggleCheckboxFilterVisibility
   | ISetPrice
   | ISetVisibleProducts
-  | ISetCheckboxFilterVisibility
+  | ISetCheckboxFilterVisibility;

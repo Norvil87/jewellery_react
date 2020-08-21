@@ -1,6 +1,7 @@
 import React from "react";
 import Filter from "../components/Filter/Filter";
 import Catalog from "../components/Catalog/Catalog";
+import Pagination from "../components/Pagination/Pagination";
 
 const CatalogPage = () => (
   <main className="content">
@@ -19,31 +20,7 @@ const CatalogPage = () => (
       </div>
       <div className="container">
         <div className="catalog">
-          <div className="catalog__pagination">
-            <button className="catalog__pagination-button" type="button">
-              Previous
-            </button>
-            <ul className="catalog__pagination-list catalog__pagination-list--desktop">
-              <li>
-                <button className="current-page">1</button>
-              </li>
-              <li>
-                <button>2</button>
-              </li>
-              <li>
-                <button>3</button>
-              </li>
-              <li>
-                <button>4</button>
-              </li>
-              <li>
-                <button>5</button>
-              </li>
-            </ul>
-            <button className="catalog__pagination-button" type="button">
-              Next
-            </button>
-          </div>
+          <Pagination />
         </div>
       </div>
     </div>

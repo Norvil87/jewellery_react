@@ -5,10 +5,13 @@ import { ReducerAction } from "react";
 import { ActionFromReducer } from "redux";
 
 const initialState: IRootState = {
-  visibleProducts: products,
+  visibleProducts: {},
+  filteredProducts: products,
   loginModalVisible: false,
   addItemModalVisible: false,
   mobileMenuVisible: false,
+  productsPerPage: 9,
+  currentPage: 1,
   cartItemsTotal: 0,
   cartItems: {},
   selectedProductId: "1", // потом поставить null
@@ -31,7 +34,6 @@ const initialState: IRootState = {
 export const reducer = (state: IRootState = initialState, action: any) => {
   switch (action.type) {
     case "SET_LOGIN_MODAL_VISIBILITY":
-      console.log(action.payload);
       return { ...state, loginModalVisible: action.payload.visible };
     case "SET_MOBILE_MENU_VISIBILITY":
       return { ...state, mobileMenuVisible: action.payload.visible };
@@ -44,7 +46,6 @@ export const reducer = (state: IRootState = initialState, action: any) => {
           selectedProductQuantity = state.cartItems[id];
         }
       }
-
       return { ...state, selectedProductId: action.payload.id, selectedProductQuantity: selectedProductQuantity };
     }
     case "INCREMENT_SELECTED_PRODUCT_QUANTITY":
@@ -69,8 +70,8 @@ export const reducer = (state: IRootState = initialState, action: any) => {
       return { ...state, productFilters: newFilters };
     case "SET_FILTER_VISIBILITY":
       return { ...state, filterVisible: action.payload.visible };
-    case "SET_VISIBLE_PRODUCTS":
-      return { ...state, visibleProducts: action.payload.products };
+    case "SET_FILTERED_PRODUCTS":
+      return { ...state, filteredProducts: action.payload.products };
     case "SET_PRICE":
       const [min, max] = action.payload.price;
       const newPriceValues = { ...state.priceFilter, minCurrent: min, maxCurrent: max };
@@ -85,6 +86,23 @@ export const reducer = (state: IRootState = initialState, action: any) => {
 
       return { ...state, cartItems: newCartItems, cartItemsTotal: sum };
     }
+    case "SET_CURRENT_PAGE":
+      const { forward, number } = action.payload;
+      let nextPage = state.currentPage;
+      const checkNextPage = () => {
+        return Math.ceil(Object.keys(state.filteredProducts).length / state.productsPerPage) > state.currentPage;
+      };
+      if (number) {
+        nextPage = number;
+      } else {
+        if (forward && checkNextPage()) {
+          nextPage++;
+        } else if (!forward && state.currentPage > 1) {
+          nextPage--;
+        }
+      }
+
+      return { ...state, currentPage: nextPage };
     default:
       return state;
   }

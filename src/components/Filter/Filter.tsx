@@ -2,7 +2,7 @@ import React from "react";
 import "./Filter.scss";
 import {
   toggleFilterCheckboxVisibility,
-  setVisibleProducts,
+  setFilteredProducts,
   setFilterCheckboxVisibility,
   setPrice,
   setFilterVisibility,
@@ -45,7 +45,7 @@ const Filter = () => {
         filteredProducts[productId] = product;
       }
     }
-    dispatch(setVisibleProducts(filteredProducts));
+    dispatch(setFilteredProducts(filteredProducts));
   };
 
   const handleFilterClick = (name: string) => () => {

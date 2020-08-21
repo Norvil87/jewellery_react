@@ -28,6 +28,16 @@ export const setAddItemModalVisibility = (visible: boolean): IActionType => {
   };
 };
 
+export const setCurrentPage = (forward?: boolean, number?: number): IActionType => {
+  return {
+    type: "SET_CURRENT_PAGE",
+    payload: {
+      forward,
+      number,
+    },
+  };
+};
+
 export const setSelectedProduct = (id: string): IActionType => {
   return {
     type: "SET_SELECTED_PRODUCT",
@@ -40,14 +50,14 @@ export const setSelectedProduct = (id: string): IActionType => {
 export const incrementSelectedProductQuantity = (): IActionType => {
   return {
     type: "INCREMENT_SELECTED_PRODUCT_QUANTITY",
-    payload: {}
+    payload: {},
   };
 };
 
 export const decrementSelectedProductQuantity = (): IActionType => {
   return {
     type: "DECREMENT_SELECTED_PRODUCT_QUANTITY",
-    payload: {}
+    payload: {},
   };
 };
 
@@ -79,9 +89,9 @@ export const setFilterVisibility = (visible: boolean): IActionType => {
   };
 };
 
-export const setVisibleProducts = (products: IProducts): IActionType => {
+export const setFilteredProducts = (products: IProducts): IActionType => {
   return {
-    type: "SET_VISIBLE_PRODUCTS",
+    type: "SET_FILTERED_PRODUCTS",
     payload: {
       products,
     },
@@ -100,6 +110,6 @@ export const setPrice = (price: number[]): IActionType => {
 export const updateCartItems = (): IActionType => {
   return {
     type: "UPDATE_CART_ITEMS",
-    payload: {}
+    payload: {},
   };
 };

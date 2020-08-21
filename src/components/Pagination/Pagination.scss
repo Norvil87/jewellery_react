@@ -1,0 +1,66 @@
+@import "../../scss/variables.scss";
+@import "../../scss/mixins.scss";
+
+.catalog__pagination {
+  padding: 35px 0;
+  margin-bottom: 40px;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.catalog__pagination-button {
+  background-color: transparent;
+  border: none;
+
+  font-size: 16px;
+  line-height: 21px;
+
+  padding: 0;
+
+  color: #1d1613;
+}
+
+.catalog__pagination-list {
+  @include listReset;
+
+  display: flex;
+  margin-right: 12px;
+}
+
+.catalog__pagination-list li {
+  margin-right: 13px;
+}
+
+.catalog__pagination-list button {
+  font-size: 16px;
+  line-height: 21px;
+  color: #9b9997;
+
+  background-color: transparent;
+  border: none;
+}
+
+.catalog__pagination-list .current-page {
+  color: #1d1613;
+}
+
+@media (max-width: $tablet-res) {
+  .catalog__pagination {
+    padding: 15px 0;
+    margin-bottom: 48px;
+  }
+
+  .catalog__pagination-list {
+    margin-right: 0;
+    margin-left: 20px;
+  }
+
+  .catalog__pagination-list li {
+    margin-right: 23px;
+  }
+
+  .catalog__pagination-button {
+    font-size: 0;
+  }
+}

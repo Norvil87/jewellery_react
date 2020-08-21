@@ -1,13 +1,30 @@
 import React from "react";
 import "./Catalog.scss";
-import { IProduct } from "../types";
+import { IProduct, IProducts } from "../types";
 import Product from "../Product/Product";
 import { useSelector } from "react-redux";
 import { IRootState } from "../../store/types";
 
 const Catalog = () => {
-  const visibleProducts = useSelector((state: IRootState) => state.visibleProducts);
- 
+  const { filteredProducts, productsPerPage, currentPage } = useSelector((state: IRootState) => {
+    return {
+      filteredProducts: state.filteredProducts,
+      productsPerPage: state.productsPerPage,
+      currentPage: state.currentPage,
+    };
+  });
+
+  let visibleProducts: IProducts = {};
+  console.log(currentPage)
+  Object.keys(filteredProducts)
+    .splice((currentPage - 1) * productsPerPage, productsPerPage)
+    .map(key => {
+      
+      visibleProducts[key] = filteredProducts[key];
+    });
+
+    
+
   const renderProducts = () => {
     const elems: JSX.Element[] = [];
 
@@ -26,7 +43,7 @@ const Catalog = () => {
           className="catalog__item"
         />
       );
-    };
+    }
 
     return elems;
   };
