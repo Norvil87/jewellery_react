@@ -1,18 +1,19 @@
 import React from "react";
 import "./ProductDescription.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleAddItemModalVisibility, updateCartItems } from "../../store/actions";
+import { setAddItemModalVisibility, updateCartItems } from "../../store/actions";
 import { IRootState } from "../../store/types";
 import { products } from "../data";
 
-const ProductDescription: React.FC<any> = () => {
+const ProductDescription: React.FC = () => {
   const selectedProductId = useSelector((state: IRootState) => state.selectedProductId);
+  const cartItems = useSelector((state: IRootState) => state.cartItems);
   const { imgUrl, srcSetJpg, srcSetWebp, name, price, additionalInfo } = products[selectedProductId];
   const { metalType, stone, size } = additionalInfo;
   const dispatch = useDispatch();
 
   const handleAddToCartButtonClick = () => {
-    dispatch(toggleAddItemModalVisibility());
+    dispatch(setAddItemModalVisibility(true));
     dispatch(updateCartItems());
   };
 

@@ -7,9 +7,9 @@ import { IRootState } from "../../store/types";
 
 const Catalog = () => {
   const visibleProducts = useSelector((state: IRootState) => state.visibleProducts);
-
+ 
   const renderProducts = () => {
-    const elems: any[] = [];
+    const elems: JSX.Element[] = [];
 
     for (const productId in visibleProducts) {
       const { name, srcSetWebp, srcSetJpg, imgUrl, price, type } = visibleProducts[productId];

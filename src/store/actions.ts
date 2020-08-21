@@ -1,21 +1,36 @@
-import { IActionType } from "./types";
+import { ISetLoginModalVisibility, IActionType } from "./types";
 import { IProducts } from "../components/types";
 
-export const toggleLoginModalVisibility = (): IActionType => {
+export const setLoginModalVisibility = (visible: boolean): IActionType => {
   return {
-    type: "TOGGLE_LOGIN_MODAL_VISIBILITY",
+    type: "SET_LOGIN_MODAL_VISIBILITY",
+    payload: {
+      visible,
+    },
   };
 };
 
-export const toggleAddItemModalVisibility = (): IActionType => {
+export const setMobileMenuVisibility = (visible: boolean): IActionType => {
   return {
-    type: "TOGGLE_ADD_ITEM_MODAL_VISIBILITY",
+    type: "SET_MOBILE_MENU_VISIBILITY",
+    payload: {
+      visible,
+    },
   };
 };
 
-export const setSelectedProductId = (id: string): IActionType => {
+export const setAddItemModalVisibility = (visible: boolean): IActionType => {
   return {
-    type: "SET_SELECTED_PRODUCT_ID",
+    type: "SET_ADD_ITEM_MODAL_VISIBILITY",
+    payload: {
+      visible,
+    },
+  };
+};
+
+export const setSelectedProduct = (id: string): IActionType => {
+  return {
+    type: "SET_SELECTED_PRODUCT",
     payload: {
       id,
     },
@@ -25,12 +40,14 @@ export const setSelectedProductId = (id: string): IActionType => {
 export const incrementSelectedProductQuantity = (): IActionType => {
   return {
     type: "INCREMENT_SELECTED_PRODUCT_QUANTITY",
+    payload: {}
   };
 };
 
 export const decrementSelectedProductQuantity = (): IActionType => {
   return {
     type: "DECREMENT_SELECTED_PRODUCT_QUANTITY",
+    payload: {}
   };
 };
 
@@ -83,5 +100,6 @@ export const setPrice = (price: number[]): IActionType => {
 export const updateCartItems = (): IActionType => {
   return {
     type: "UPDATE_CART_ITEMS",
+    payload: {}
   };
 };

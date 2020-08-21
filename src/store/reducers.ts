@@ -2,15 +2,16 @@ import { IRootState, IActionType } from "./types";
 import { products } from "../components/data";
 import { ICartProducts } from "../components/types";
 import { ReducerAction } from "react";
-import { setSelectedProductId } from "./actions";
+import { ActionFromReducer } from "redux";
 
 const initialState: IRootState = {
   visibleProducts: products,
   loginModalVisible: false,
   addItemModalVisible: false,
+  mobileMenuVisible: false,
   cartItemsTotal: 0,
   cartItems: {},
-  selectedProductId: '1', // потом поставить null
+  selectedProductId: "1", // потом поставить null
   selectedProductQuantity: 1,
   filterVisible: true,
   productFilters: {
@@ -29,19 +30,30 @@ const initialState: IRootState = {
 
 export const reducer = (state: IRootState = initialState, action: any) => {
   switch (action.type) {
-    case "TOGGLE_LOGIN_MODAL_VISIBILITY":
-      return { ...state, loginModalVisible: !state.loginModalVisible };
-    case "TOGGLE_ADD_ITEM_MODAL_VISIBILITY":
-      return { ...state, addItemModalVisible: !state.addItemModalVisible, selectedProductQuantity: 1 };
-    case "SET_SELECTED_PRODUCT_ID":
-      return { ...state, selectedProductId: action.payload.id };
+    case "SET_LOGIN_MODAL_VISIBILITY":
+      console.log(action.payload);
+      return { ...state, loginModalVisible: action.payload.visible };
+    case "SET_MOBILE_MENU_VISIBILITY":
+      return { ...state, mobileMenuVisible: action.payload.visible };
+    case "SET_ADD_ITEM_MODAL_VISIBILITY":
+      return { ...state, addItemModalVisible: action.payload.visible };
+    case "SET_SELECTED_PRODUCT": {
+      let selectedProductQuantity = 1;
+      for (const id in Object.keys(state.cartItems)) {
+        if (id === action.payload.id) {
+          selectedProductQuantity = state.cartItems[id];
+        }
+      }
+
+      return { ...state, selectedProductId: action.payload.id, selectedProductQuantity: selectedProductQuantity };
+    }
     case "INCREMENT_SELECTED_PRODUCT_QUANTITY":
       return {
         ...state,
         selectedProductQuantity: state.selectedProductQuantity + 1,
       };
     case "DECREMENT_SELECTED_PRODUCT_QUANTITY":
-      const selectedProductQuantity =
+      let selectedProductQuantity =
         state.selectedProductQuantity === 1 ? state.selectedProductQuantity : state.selectedProductQuantity - 1;
       return { ...state, selectedProductQuantity: selectedProductQuantity };
     case "TOGGLE_FILTER_CHECKBOX_VISIBILITY": {
@@ -64,20 +76,14 @@ export const reducer = (state: IRootState = initialState, action: any) => {
       const newPriceValues = { ...state.priceFilter, minCurrent: min, maxCurrent: max };
       return { ...state, priceFilter: newPriceValues };
     case "UPDATE_CART_ITEMS": {
-      let newCartItems: ICartProducts = {...state.cartItems};
-      const newItem = { id: state.selectedProductId, quantity: state.selectedProductQuantity };
-      if (!Object.keys(newCartItems).length) {
-        //newCartItems.push(newItem);
-      } else {
-        const itemInCart = newCartItems[state.selectedProductId];
-        if (itemInCart === undefined) {
-          //newCartItems.push(newItem);
-        } else {
-          //itemInCart.quantity = state.selectedProductQuantity;
-        }
+      let newCartItems: ICartProducts = { ...state.cartItems };
+      newCartItems[state.selectedProductId] = state.selectedProductQuantity;
+      let sum = 0;
+      for (const value of Object.values(newCartItems)) {
+        sum += value;
       }
 
-      return { ...state, cartItems: newCartItems };
+      return { ...state, cartItems: newCartItems, cartItemsTotal: sum };
     }
     default:
       return state;

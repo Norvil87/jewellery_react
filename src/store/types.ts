@@ -3,6 +3,7 @@ import { IProducts, ICartProducts } from "../components/types";
 export interface IRootState {
   visibleProducts: IProducts;
   loginModalVisible: boolean;
+  mobileMenuVisible: boolean;
   addItemModalVisible: boolean;
   cartItems: ICartProducts;
   cartItemsTotal: number;
@@ -13,30 +14,39 @@ export interface IRootState {
   priceFilter: { [name: string]: number };
 }
 
-interface IToggleLoginModalVisibility {
+export interface ISetLoginModalVisibility {
   type: string;
+  payload: { visible: boolean };
 }
 
-interface IToggleCartModalVisibility {
+interface ISetCartModalVisibility {
   type: string;
+  payload: { visible: boolean };
 }
 
-interface IIncrementSelectedProducctQuantity {
+interface IIncrementSelectedProductQuantity {
   type: string;
+  payload: {};
 }
 
-interface IDecrementSelectedProducctQuantity {
+interface IDecrementSelectedProductQuantity {
   type: string;
+  payload: {};
 }
 
-interface ISetSelectedProductId {
+interface ISetSelectedProduct {
   type: string;
-  payload: { [id: string]: number };
+  payload: { id: string };
 }
 
 interface IToggleCheckboxFilterVisibility {
   type: string;
-  payload: any;
+  payload: { name: string };
+}
+
+interface ISetCheckboxFilterVisibility {
+  type: string;
+  payload: { name: string; visible: boolean };
 }
 
 interface ISetPrice {
@@ -44,11 +54,18 @@ interface ISetPrice {
   payload: number[];
 }
 
+interface ISetVisibleProducts {
+  type: string;
+  payload: { products: IProducts };
+}
+
 export type IActionType =
-  | IToggleLoginModalVisibility
-  | IToggleCartModalVisibility
-  | IIncrementSelectedProducctQuantity
-  | IDecrementSelectedProducctQuantity
-  | ISetSelectedProductId
+  | ISetLoginModalVisibility
+  | ISetCartModalVisibility
+  | IIncrementSelectedProductQuantity
+  | IDecrementSelectedProductQuantity
+  | ISetSelectedProduct
   | IToggleCheckboxFilterVisibility
-  | ISetPrice;
+  | ISetPrice
+  | ISetVisibleProducts
+  | ISetCheckboxFilterVisibility

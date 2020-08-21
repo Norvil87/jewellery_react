@@ -3,7 +3,7 @@ import "./AddItemModal.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
-  toggleAddItemModalVisibility,
+  setAddItemModalVisibility,
   incrementSelectedProductQuantity,
   decrementSelectedProductQuantity,
   updateCartItems,
@@ -73,14 +73,14 @@ const AddItemModal = () => {
           <Link
             className="button addItem__link addItem__link--continue"
             to="/catalog"
-            onClick={() => dispatch(toggleAddItemModalVisibility())}
+            onClick={() => dispatch(setAddItemModalVisibility(false))}
           >
             Continue shopping
           </Link>
           <Link
             className="button addItem__link addItem__link--checkout"
             to="/underConstruction"
-            onClick={() => dispatch(toggleAddItemModalVisibility())}
+            onClick={() => dispatch(setAddItemModalVisibility(false))}
           >
             Checkout
           </Link>
@@ -88,7 +88,7 @@ const AddItemModal = () => {
         <button
           className="addItem__button-close"
           type="button"
-          onClick={() => dispatch(toggleAddItemModalVisibility())}
+          onClick={() => dispatch(setAddItemModalVisibility(false))}
         >
           close modal
         </button>

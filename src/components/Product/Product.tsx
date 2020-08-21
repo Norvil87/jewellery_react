@@ -1,9 +1,8 @@
 import React from "react";
 import "./Product.scss";
 import { IProduct } from "../types";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import ProductPage from "../../pages/ProductPage";
-import { setSelectedProductId } from "../../store/actions";
+import { Link } from "react-router-dom";
+import { setSelectedProduct } from "../../store/actions";
 import { useDispatch } from "react-redux";
 
 const Product: React.FC<IProduct> = props => {
@@ -13,7 +12,7 @@ const Product: React.FC<IProduct> = props => {
   return (
     <>
       <li className={`${className} product`}>
-        <Link className="new__link" to={`/products/${id}`} onClick={() => dispatch(setSelectedProductId(id))}>
+        <Link className="new__link" to={`/products/${id}`} onClick={() => dispatch(setSelectedProduct(id))}>
           <h3>{name}</h3>
           <div className="product__image-container">
             <picture>

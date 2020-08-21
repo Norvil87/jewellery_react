@@ -1,26 +1,30 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, withRouter, RouteComponentProps } from "react-router-dom";
 import "./Header.scss";
 import "./MobileMenu.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "../../store/types";
-import { toggleLoginModalVisibility } from ",,/../../src/store/actions";
-import icons from "../resource";
+import { setLoginModalVisibility, setMobileMenuVisibility } from "../../../src/store/actions";
 
 const Header = (props: RouteComponentProps) => {
-  const cartItemsTotal = useSelector((state: IRootState) => state.cartItemsTotal);
+  const { cartItemsTotal, mobileMenuVisible } = useSelector((state: IRootState) => {
+    return {
+      cartItemsTotal: state.cartItemsTotal,
+      mobileMenuVisible: state.mobileMenuVisible,
+    };
+  });
+
   const isMainPage = props.location.pathname === "/";
-  const tabletBreakpoint = 767;
+  const desktopBreakpoint = 1023;
   const dispatch = useDispatch();
-  const [isMobileMenuOpened, toggleMobileMenuVisibility] = useState(false); // вынести в стор???
 
   const handleClick = () => {
-    toggleMobileMenuVisibility(!isMobileMenuOpened);
+    dispatch(setMobileMenuVisibility(!mobileMenuVisible));
   };
 
   window.addEventListener("resize", () => {
-    if (window.innerWidth > tabletBreakpoint) {
-      toggleMobileMenuVisibility(false);
+    if (window.innerWidth > desktopBreakpoint) {
+      dispatch(setMobileMenuVisibility(false));
     }
   });
 
@@ -74,7 +78,7 @@ const Header = (props: RouteComponentProps) => {
               className="header__user-button"
               type="button"
               onClick={() => {
-                dispatch(toggleLoginModalVisibility());
+                dispatch(setLoginModalVisibility(true));
               }}
             >
               Login
@@ -116,7 +120,7 @@ const Header = (props: RouteComponentProps) => {
           </ul>
         </nav>
       </header>
-      <header className={`header container mobile-menu ${!isMobileMenuOpened ? "hidden" : ""}`}>
+      <header className={`header container mobile-menu ${!mobileMenuVisible ? "hidden" : ""}`}>
         <div className="header__top-container mobile-menu__top-container">
           <button className="header__menu-button" type="button" onClick={handleClick}>
             <svg className="header__icon-hamburger" width="25" height="16" role="img" aria-label="Open menu">
