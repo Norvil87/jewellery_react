@@ -1,9 +1,12 @@
 import React from "react";
 import "./New.scss";
 import { products } from "../data";
-import { IProducts, IProduct } from "../types";
 import { Link } from "react-router-dom";
 import Product from "../Product/Product";
+import AliceCarousel from "react-alice-carousel";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const New = () => {
   const renderProducts = () => {
@@ -29,38 +32,33 @@ const New = () => {
     return elems;
   };
 
+  const settings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+  };
+
+  const items = renderProducts();
+
   return (
     <section className="new content__new">
       <div className="container">
         <div className="new__top-container">
-          <button className="new__control-button new__control-button--backwards" type="button">
-            Back
-          </button>
           <div>
             <h2>New In</h2>
             <Link className="new__catalog-link" to="/catalog">
               Shop now
             </Link>
           </div>
-          <button className="new__control-button new__control-button--forward" type="button">
-            Forward
-          </button>
         </div>
-        <div className="new__gallery">
+
+        {/* <div className="new__gallery">
           <ul className="new__gallery-list">{renderProducts()}</ul>
-        </div>
+        </div> */}
+        <Slider {...settings}>{items}</Slider>
         <div className="new__pagination">
-          <ul className="new__pagination-list new__pagination-list--desktop">
-            <li>
-              <button className="current-page">1</button>
-            </li>
-            <li>
-              <button>2</button>
-            </li>
-            <li>
-              <button>3</button>
-            </li>
-          </ul>
           <ul className="new__pagination-list new__pagination-list--tablet">
             <li>
               <button className="current-page">1</button>

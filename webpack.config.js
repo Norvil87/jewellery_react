@@ -31,14 +31,14 @@ module.exports = {
         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
       {
-        test: /\.(woff|woff2)$/,
+        test: /\.(woff|woff2|eot|ttf)$/,
         loader: "file-loader",
         options: {
           outputPath: "fonts",
         },
       },
       {
-        test: /\.(png|jpg|webp)$/,
+        test: /\.(png|jpg|webp|gif)$/,
         loader: "file-loader",
         options: {
           outputPath: "img",

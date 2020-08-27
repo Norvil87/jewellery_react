@@ -22,11 +22,11 @@ const Header = (props: RouteComponentProps) => {
     dispatch(setMobileMenuVisibility(!mobileMenuVisible));
   };
 
-  window.addEventListener("resize", () => {
+  /* window.addEventListener("resize", () => {
     if (window.innerWidth > desktopBreakpoint) {
       dispatch(setMobileMenuVisibility(false));
     }
-  });
+  }); */
 
   return (
     <>

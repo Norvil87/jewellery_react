@@ -11,7 +11,7 @@ const Product: React.FC<IProduct> = props => {
 
   return (
     <>
-      <li className={`${className} product`}>
+      <div className={`${className} product`}>
         <Link className="new__link" to={`/products/${id}`} onClick={() => dispatch(setSelectedProduct(id))}>
           <h3>{name}</h3>
           <div className="product__image-container">
@@ -22,7 +22,7 @@ const Product: React.FC<IProduct> = props => {
           </div>
           <p>$ {price}</p>
         </Link>
-      </li>
+      </div>
     </>
   );
 };

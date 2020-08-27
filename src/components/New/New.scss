@@ -12,39 +12,31 @@
   margin: 0 auto;
 }
 
-.new__control-button {
-  background-color: transparent;
-  border: none;
-
-  font-size: 0;
-
+.slick-prev,
+.slick-next {
   width: 30px;
   height: 11px;
+  font-size: 0;
+  bottom: 456px;
 
+  background-color: transparent;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-.new__control-button:focus {
-  outline: none;
-}
-
-.new__control-button--backwards {
+.slick-prev {
+  left: 0;
   background-image: url("data:image/svg+xml,%3Csvg width='30' height='11' viewBox='0 0 30 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5.5L1 5.5M1 5.5L6.48649 10M1 5.5L6.48649 1' stroke='%23A87B62'/%3E%3C/svg%3E%0A");
 }
 
-.new__control-button--forward {
+.slick-next {
+  right: 0;
   background-image: url("data:image/svg+xml,%3Csvg width='30' height='11' viewBox='0 0 30 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 5.5H29M29 5.5L23.5135 1M29 5.5L23.5135 10' stroke='%23A87B62'/%3E%3C/svg%3E%0A");
 }
 
 .new__gallery-item {
-  width: 7.7%;
-
-  margin-right: auto;
-
-  &:nth-child(4n) {
-    margin-right: 0;
-  }
+  width: 270px; // %?
+  margin: 0 auto;
 }
 
 .new__gallery-item .product__image-container {
@@ -65,28 +57,32 @@
   width: 300%;
 }
 
-.new__pagination {
+.slick-dots {
   display: flex;
   justify-content: center;
-
+  margin-left: 10px;
   margin-bottom: 10px;
 }
 
-.new__pagination-list {
-  @include listReset;
+.slick-dots li {
+  margin-right: 15px;
+}
+.slick-dots button {
+  font-size: 16px;
+  line-height: 21px;
+  color: #9b9997;
 
-  display: flex;
+  background-color: transparent;
+  border: none;
+}
 
-  margin-left: 15px;
+.slick-active button {
+  color: #000
 }
 
 .new__pagination-list--tablet,
 .new__pagination-list--mobile {
   display: none;
-}
-
-.new__pagination-list li {
-  margin-right: 15px;
 }
 
 .new__pagination-list button {
@@ -104,7 +100,7 @@
 
 .new__top-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 
   margin-bottom: 60px;
