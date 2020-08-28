@@ -1,14 +1,19 @@
-import React from "react";
-import "./New.scss";
+import React, { useState } from "react";
 import { products } from "../data";
 import { Link } from "react-router-dom";
 import Product from "../Product/Product";
-import AliceCarousel from "react-alice-carousel";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "./New.scss";
+import "./Slider.scss";
 
 const New = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsMobile = 2;
+  const desktopBreakpoint = 1024;
+  const tabletBreakpoint = 767;
+
   const renderProducts = () => {
     const elems: JSX.Element[] = [];
 
@@ -32,15 +37,37 @@ const New = () => {
     return elems;
   };
 
-  const settings = {
+  const sliderSettings = {
     dots: true,
     infinite: false,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 4,
+    draggable: false,
+    responsive: [
+      {
+        breakpoint: desktopBreakpoint,
+        settings: {
+          slidesToShow: itemsMobile,
+          slidesToScroll: itemsMobile,
+        },
+      },
+      {
+        breakpoint: tabletBreakpoint,
+        settings: {
+          dots: false,
+          arrows: false,
+          draggable: true,
+          slidesToShow: itemsMobile,
+          slidesToScroll: itemsMobile,
+          afterChange: (current: number) => setCurrentPage(Math.floor(current / 2 + 1)),
+        },
+      },
+    ],
   };
 
   const items = renderProducts();
+  const totalPages = Math.floor(Object.keys(items).length / itemsMobile);
 
   return (
     <section className="new content__new">
@@ -53,34 +80,10 @@ const New = () => {
             </Link>
           </div>
         </div>
-
-        {/* <div className="new__gallery">
-          <ul className="new__gallery-list">{renderProducts()}</ul>
-        </div> */}
-        <Slider {...settings}>{items}</Slider>
-        <div className="new__pagination">
-          <ul className="new__pagination-list new__pagination-list--tablet">
-            <li>
-              <button className="current-page">1</button>
-            </li>
-            <li>
-              <button>2</button>
-            </li>
-            <li>
-              <button>3</button>
-            </li>
-            <li>
-              <button>4</button>
-            </li>
-            <li>
-              <button>5</button>
-            </li>
-            <li>
-              <button>6</button>
-            </li>
-          </ul>
-          <div className="new__pagination-list new__pagination-list--mobile">
-            <span>1 </span> of <span> 6</span>
+        <Slider {...sliderSettings}>{items}</Slider>
+        <div className="new__mobile-pagination">
+          <div>
+            <span>{`${currentPage} of ${totalPages}`}</span>
           </div>
         </div>
       </div>

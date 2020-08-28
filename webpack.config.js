@@ -9,16 +9,16 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "build"),
     filename: "bundle.js",
-    publicPath: '/',
+    publicPath: "/",
   },
   resolve: {
     extensions: [".js", ".jsx", ".json", ".ts", ".tsx"],
   },
   devServer: {
     watchContentBase: true,
-    historyApiFallback: true, // ?
-    contentBase: './', // ?
-    hot: true // ?
+    historyApiFallback: true,
+    contentBase: "./",
+    hot: true,
   },
   module: {
     rules: [
@@ -46,10 +46,6 @@ module.exports = {
           useRelativePath: true,
         },
       },
-      /* {
-        test: /\.(png|jpg|webp)$/,
-        loader: "url-loader",
-      }, */
       {
         test: /\.svg$/,
         use: ["svg-sprite-loader"],

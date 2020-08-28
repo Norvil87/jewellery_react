@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./AddItemModal.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -13,10 +13,21 @@ import { products } from "../data";
 
 const AddItemModal = () => {
   const dispatch = useDispatch();
+  const modalOverlay = useRef(null);
   const selectedProductId = useSelector((state: IRootState) => state.selectedProductId);
   const selectedProductQuantity = useSelector((state: IRootState) => state.selectedProductQuantity);
-  const cartItems = useSelector((state: IRootState) => state.cartItems);
- const { name, price, imgUrl, srcSetJpg, srcSetWebp } = products[selectedProductId];
+
+  const { name, price, imgUrl, srcSetJpg, srcSetWebp } = products[selectedProductId];
+
+  const handleOverlayClick = (evt: React.MouseEvent) => {
+    if (evt.target === modalOverlay.current) {
+      dispatch(setAddItemModalVisibility(false));
+    }
+  };
+
+  const handleClick = () => {
+    dispatch(setAddItemModalVisibility(false));
+  };
 
   const handleIncrementButtonClick = () => {
     dispatch(incrementSelectedProductQuantity());
@@ -29,7 +40,7 @@ const AddItemModal = () => {
   };
 
   return (
-    <div className="addItem">
+    <div className="addItem" ref={modalOverlay} onClick={handleOverlayClick}>
       <div className="addItem__content">
         <h2>The item was added to your cart</h2>
         <div className="addItem__container">
@@ -70,26 +81,14 @@ const AddItemModal = () => {
           </div>
         </div>
         <div className="addItem__links-container">
-          <Link
-            className="button addItem__link addItem__link--continue"
-            to="/catalog"
-            onClick={() => dispatch(setAddItemModalVisibility(false))}
-          >
+          <Link className="button addItem__link addItem__link--continue" to="/catalog" onClick={handleClick}>
             Continue shopping
           </Link>
-          <Link
-            className="button addItem__link addItem__link--checkout"
-            to="/underConstruction"
-            onClick={() => dispatch(setAddItemModalVisibility(false))}
-          >
+          <Link className="button addItem__link addItem__link--checkout" to="/underConstruction" onClick={handleClick}>
             Checkout
           </Link>
         </div>
-        <button
-          className="addItem__button-close"
-          type="button"
-          onClick={() => dispatch(setAddItemModalVisibility(false))}
-        >
+        <button className="addItem__button-close" type="button" onClick={handleClick}>
           close modal
         </button>
       </div>

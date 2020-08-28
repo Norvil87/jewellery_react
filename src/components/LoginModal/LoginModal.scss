@@ -85,6 +85,14 @@
   box-shadow: 0 5px 32px rgba(226, 221, 215, 0.24);
 }
 
+.login__errorMsg {
+  font-size: 8px;
+  color: red;
+  position: absolute;
+  bottom: -3px;
+  left: 3px;
+}
+
 .webp .login__content {
   background-image: url("../../img/background-sweet-ice-cream-photography@1x.webp");
 }
@@ -113,6 +121,7 @@
   padding-top: 9px;
   padding-bottom: 9px;
   margin-bottom: 25px;
+  position: relative;
 }
 
 .login__input-container--password {

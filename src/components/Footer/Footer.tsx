@@ -1,18 +1,42 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import "./Footer.scss";
 
 const Footer = () => {
+  const { register, handleSubmit, errors, clearErrors } = useForm();
+  const onSubmit = () => {
+    console.log("submitted");
+  };
+
   return (
     <footer className="footer">
       <div className="container footer__container">
         <div className="footer__top-container">
           <h2>The good stuff in your inbox</h2>
           <p>News and updates from CH. No spam, we promise.</p>
-          <form className="footer__form" action="#" method="POST" encType="multipart/form-data" autoComplete="on">
+          <form
+            id="test"
+            className="footer__form"
+            action="#"
+            method="POST"
+            encType="multipart/form-data"
+            autoComplete="on"
+            onSubmit={handleSubmit(onSubmit)}
+            onChange={() => clearErrors()}
+          >
             <div className="footer__form-input-container">
-              <input id="footer-email" type="email" name="email" placeholder="Your E-mail" />
-              <label htmlFor="footer-email" className="visually-hidden">Subscribe with email</label>
+              <input
+                id="footer-email"
+                name="email"
+                placeholder="Your E-mail"
+                ref={register({ required: true, pattern: /\S+@\S+\.\S+/ })}
+              />
+              {errors.email?.type === "required" && <span className="footer__errorMsg">This field is required</span>}
+              {errors.email?.type === "pattern" && <span className="footer__errorMsg">Invalid email</span>}
+              <label htmlFor="footer-email" className="visually-hidden">
+                Subscribe with email
+              </label>
             </div>
             <button className="footer__form-button" type="submit">
               Sign Up

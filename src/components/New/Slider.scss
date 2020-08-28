@@ -1,0 +1,44 @@
+.slick-dots {
+  display: flex;
+  justify-content: center;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.slick-dots li {
+  margin-right: 15px;
+}
+.slick-dots button {
+  font-size: 16px;
+  line-height: 21px;
+  color: #9b9997;
+
+  background-color: transparent;
+  border: none;
+}
+
+.slick-active button {
+  color: #000;
+}
+
+.slick-prev,
+.slick-next {
+  width: 30px;
+  height: 11px;
+  font-size: 0;
+  bottom: 456px;
+
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.slick-prev {
+  left: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='30' height='11' viewBox='0 0 30 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5.5L1 5.5M1 5.5L6.48649 10M1 5.5L6.48649 1' stroke='%23A87B62'/%3E%3C/svg%3E%0A");
+}
+
+.slick-next {
+  right: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='30' height='11' viewBox='0 0 30 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 5.5H29M29 5.5L23.5135 1M29 5.5L23.5135 10' stroke='%23A87B62'/%3E%3C/svg%3E%0A");
+}

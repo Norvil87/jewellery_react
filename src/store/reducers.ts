@@ -10,7 +10,7 @@ const initialState: IRootState = {
   loginModalVisible: false,
   addItemModalVisible: false,
   mobileMenuVisible: false,
-  productsPerPage: 9,
+  productsPerPage: 6,
   currentPage: 1,
   cartItemsTotal: 0,
   cartItems: {},
